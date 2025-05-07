@@ -1,27 +1,15 @@
 <template>
-  <!-- Hero Section -->
-  <section class="relative w-full h-screen bg-cover bg-center">
-    <div class="relative w-full h-full">
-      <img
-        src="/images/page/a.jpg"
-        alt="Background Image"
-        class="absolute inset-0 w-full h-full object-cover"
-      />
-      <div class="absolute inset-0 bg-black bg-opacity-60"></div>
-      <div class="absolute inset-0 flex flex-col items-center justify-center">
-        <h1 class="md:text-8xl text-3xl text-white font-medium">
-          Pijar Nusantara
-        </h1>
-      </div>
-    </div>
-  </section>
+  <HeroSection />
 
   <!-- Text Section -->
-  <section
-    class="relative w-full pt-20 md:pt-32 flex items-center overflow-hidden pb-32"
-  >
+  <section class="relative w-full pt-20 md:pt-32 flex items-center pb-32">
     <!-- Container agar konten tetap rapi -->
-    <div class="container md:px-16 lg:px-20 flex w-full">
+    <div class="container relative md:px-16 lg:px-20 flex w-full z-10">
+      <img
+        src=""
+        alt=""
+        class="absolute top-0 right-0 -translate-x-1/2 -translate-y-1/2 w-[600px] opacity-50 pointer-events-none"
+      />
       <div class="flex-1 py-20">
         <h1 class="text-5xl font-bold">Tentang Kami</h1>
         <p class="text-justify pt-8">
@@ -364,7 +352,7 @@
     </div>
   </section>
   <!-- faq -->
-  <section class="w-full py-20 px-4 md:px-16 ">
+  <section class="w-full py-20 px-4 md:px-16">
     <div class="container mx-auto flex flex-col md:flex-row gap-12 items-start">
       <!-- Left Text -->
       <div class="md:w-1/2">
@@ -415,9 +403,14 @@
 </template>
 
 <script>
+import HeroSection from "./../sections/Landing/Hero.vue";
 export default {
+  components: {
+    HeroSection,
+  },
   data() {
     return {
+      // FAQ data
       activeIndex: null,
       faqList: [
         {
@@ -439,9 +432,16 @@ export default {
     };
   },
   methods: {
+    // FAQ toggle method
     toggle(index) {
       this.activeIndex = this.activeIndex === index ? null : index;
     },
   },
 };
 </script>
+
+<style scoped>
+.loading-strip {
+  transition: width 2s linear;
+}
+</style>
