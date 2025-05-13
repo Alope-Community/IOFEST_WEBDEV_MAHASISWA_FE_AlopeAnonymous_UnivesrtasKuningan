@@ -3,6 +3,10 @@ import { createWebHistory, createRouter } from "vue-router";
 import home from "../views/home.vue";
 import login from "../views/login.vue";
 import register from "../views/register.vue";
+import List_Relawan from "../sections/Relawan/List_Relawan.vue";
+import Relawan from "../sections/Landing/Relawan.vue";
+import List_Donasi from "../sections/Donasi/List_Donasi.vue";
+import Artikel from "../views/Artikel.vue"
 
 const router = createRouter({
   history: createWebHistory(),
@@ -21,6 +25,26 @@ const router = createRouter({
       path: "/register",
       name: "register",
       component: register,
+    },
+    {
+      path: "/artikel",
+      name: "artikel",
+      component: Artikel,
+    },
+    {
+      path: "/list_relawan",
+      name: "list_relawan",
+      component: List_Relawan,
+    },
+    {
+      path: "/list_donasi",
+      name: "list_donasi",
+      component: List_Donasi,
+    },
+    {
+      path: "/relawan",
+      name: "relawan",
+      component: Relawan,
     },
   ],
 });
