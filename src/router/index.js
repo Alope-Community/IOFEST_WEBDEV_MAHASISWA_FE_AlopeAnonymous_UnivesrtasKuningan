@@ -3,6 +3,9 @@ import { createWebHistory, createRouter } from "vue-router";
 import home from "../views/home.vue";
 import login from "../views/login.vue";
 import register from "../views/register.vue";
+import detailRelawan from "../views/detailRelawan.vue";
+import deftarRelawan from "../views/daftarRelawan.vue"
+import DaftarRelawan from "../views/daftarRelawan.vue";
 
 const router = createRouter({
   history: createWebHistory(),
@@ -21,6 +24,16 @@ const router = createRouter({
       path: "/register",
       name: "register",
       component: register,
+    },
+    {
+      path: "/detail-relawan",
+      name: "datailRelawan",
+      component: detailRelawan,
+    },
+    {
+      path: "/daftar-relawan",
+      name: "daftarlRelawan",
+      component: DaftarRelawan,
     },
   ],
 });
