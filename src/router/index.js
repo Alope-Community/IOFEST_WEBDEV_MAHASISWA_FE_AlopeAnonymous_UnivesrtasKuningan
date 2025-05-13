@@ -4,8 +4,9 @@ import home from "../views/home.vue";
 import login from "../views/login.vue";
 import register from "../views/register.vue";
 import detailRelawan from "../views/detailRelawan.vue";
-import deftarRelawan from "../views/daftarRelawan.vue"
-import DaftarRelawan from "../views/daftarRelawan.vue";
+import daftarRelawan from "../views/daftarRelawan.vue";
+import profile from "../views/profile.vue";
+import forumDiskusi from "../views/forumDiskusi.vue";
 
 const router = createRouter({
   history: createWebHistory(),
@@ -26,6 +27,11 @@ const router = createRouter({
       component: register,
     },
     {
+      path: "/profile",
+      name: "profile",
+      component: profile,
+    },
+    {
       path: "/detail-relawan",
       name: "datailRelawan",
       component: detailRelawan,
@@ -33,7 +39,12 @@ const router = createRouter({
     {
       path: "/daftar-relawan",
       name: "daftarlRelawan",
-      component: DaftarRelawan,
+      component: daftarRelawan,
+    },
+    {
+      path: "/forum-diskusi",
+      name: "forumDiskusi",
+      component: forumDiskusi,
     },
   ],
 });
