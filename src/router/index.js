@@ -9,6 +9,10 @@ import daftarRelawan from "../views/daftarRelawan.vue";
 import daftarDonasi from "../views/daftarDonasi.vue"
 import profile from "../views/profile.vue";
 import forumDiskusi from "../views/forumDiskusi.vue";
+import List_Relawan from "../sections/Relawan/List_Relawan.vue";
+import Relawan from "../sections/Landing/Relawan.vue";
+import List_Donasi from "../sections/Donasi/List_Donasi.vue";
+import Artikel from "../views/Artikel.vue"
 
 const router = createRouter({
   history: createWebHistory(),
@@ -57,6 +61,26 @@ const router = createRouter({
       path: "/forum-diskusi",
       name: "forumDiskusi",
       component: forumDiskusi,
+    },
+    {
+      path: "/artikel",
+      name: "artikel",
+      component: Artikel,
+    },
+    {
+      path: "/list_relawan",
+      name: "list_relawan",
+      component: List_Relawan,
+    },
+    {
+      path: "/list_donasi",
+      name: "list_donasi",
+      component: List_Donasi,
+    },
+    {
+      path: "/relawan",
+      name: "relawan",
+      component: Relawan,
     },
   ],
 });
