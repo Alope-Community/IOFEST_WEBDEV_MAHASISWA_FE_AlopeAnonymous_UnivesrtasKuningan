@@ -17,9 +17,9 @@
       <h2
         class="md:text-4xl text-3xl text-center font-bold text-gray-900 mb-12"
       >
-        Temukan <span class="text-primary">Program</span> Yang
+        Temukan <span class="text-primary">Donasi</span> Untuk
         <br class="sm:block hidden" />
-        Tepat Untukmu
+        Memantu Sesama
       </h2>
 
       <!-- Scrollable Horizontal Wrapper -->
@@ -55,11 +55,10 @@ export default {
   data() {
     return {
       programs: [
-        { title: "Jakarta 123", image: "/images/page/program.png" },
-        { title: "Bandung Cerdas", image: "/images/page/program.png" },
-        { title: "Surabaya Peduli", image: "/images/page/program.png" },
-        { title: "Makassar Mengajar", image: "/images/page/program.png" },
-        { title: "Medan Relawan", image: "/images/page/program.png" },
+        { title: "Biaya Sekolah Anak Yatim", image: "https://kitabisa.com/_next/image?url=https%3A%2F%2Fimgix.kitabisa.com%2Fmaster%2F111939a5-2f80-11f0-a556-defbf884c5fd_C1D6AB5E6562169.png%3Fauto%3Dformat%26fm%3Dpjpg%26ch%3DWidth%2CDPR%2CSave-Data%2CViewport-Width&w=640&q=75" },
+        { title: "Wujudkan Anak Dhuafa Bisa Sekolah", image: "https://kitabisa.com/_next/image?url=https%3A%2F%2Fimgix.kitabisa.com%2Fe7529a6b-6170-496b-b742-52383a7553ab.jpg%3Fauto%3Dformat%26fm%3Dpjpg%26ch%3DWidth%2CDPR%2CSave-Data%2CViewport-Width&w=640&q=75" },
+        { title: "Yatim Dan Penghafal Quran", image: "https://kitabisa.com/_next/image?url=https%3A%2F%2Fimgix.kitabisa.com%2Fmaster%2F78bacea9-2f5b-11f0-a556-defbf884c5fd_936339C194169CC7.png%3Fauto%3Dformat%26fm%3Dpjpg%26ch%3DWidth%2CDPR%2CSave-Data%2CViewport-Width&w=640&q=75" },
+        { title: "Infaq Alquran", image: "https://kitabisa.com/_next/image?url=https%3A%2F%2Fimgix.kitabisa.com%2Fmaster%2Faaa7ced7-3021-11f0-a556-defbf884c5fd_F010CDE0F6AAB958.png%3Fauto%3Dformat%26fm%3Dpjpg%26ch%3DWidth%2CDPR%2CSave-Data%2CViewport-Width&w=640&q=75" },
       ],
     };
   },

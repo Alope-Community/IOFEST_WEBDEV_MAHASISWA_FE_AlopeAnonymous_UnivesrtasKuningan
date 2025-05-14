@@ -4,7 +4,9 @@ import home from "../views/home.vue";
 import login from "../views/login.vue";
 import register from "../views/register.vue";
 import detailRelawan from "../views/detailRelawan.vue";
+import detailDonasi from "../views/detailDonasi.vue";
 import daftarRelawan from "../views/daftarRelawan.vue";
+import daftarDonasi from "../views/daftarDonasi.vue"
 import profile from "../views/profile.vue";
 import forumDiskusi from "../views/forumDiskusi.vue";
 
@@ -37,9 +39,19 @@ const router = createRouter({
       component: detailRelawan,
     },
     {
+      path: "/detail-donasi",
+      name: "datailDonasi",
+      component: detailDonasi,
+    },
+    {
       path: "/daftar-relawan",
       name: "daftarlRelawan",
       component: daftarRelawan,
+    },
+    {
+      path: "/daftar-donasi",
+      name: "daftarlDonasi",
+      component: daftarDonasi,
     },
     {
       path: "/forum-diskusi",

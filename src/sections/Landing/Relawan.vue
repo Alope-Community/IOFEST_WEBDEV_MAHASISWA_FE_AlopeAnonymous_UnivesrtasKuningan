@@ -53,11 +53,11 @@ export default {
   data() {
     return {
       programs: [
-        { title: "Jakarta 123", image: "/images/page/program.png" },
-        { title: "Bandung Cerdas", image: "/images/page/program.png" },
-        { title: "Surabaya Peduli", image: "/images/page/program.png" },
-        { title: "Makassar Mengajar", image: "/images/page/program.png" },
-        { title: "Medan Relawan", image: "/images/page/program.png" },
+        { title: "Baduy Mengajar", image: "/images/relawan/1.jpg" },
+        { title: "Call Valunters Jakarta", image: "/images/relawan/2.jpg" },
+        { title: "Mengajar Indonesia Batch 14", image: "/images/relawan/3.jpg" },
+        { title: "Solidarity For Kids", image: "/images/relawan/4.jpg" },
+        { title: "Ceria Bersama", image: "/images/relawan/5.jpg" },
       ],
     };
   },

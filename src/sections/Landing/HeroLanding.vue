@@ -25,9 +25,10 @@
           Dari Kita, Untuk Nusantara
         </h1>
         <p class="w-4/5 md:w-1/2 pt-4 text-gray-200">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere at
-          consectetur architecto enim beatae veritatis quae in, voluptate, porro
-          magnam voluptates unde ut debitis dolorem.
+          Pijar Nusantara hadir sebagai jembatan bagi para relawan dan komunitas
+          untuk bersama-sama menerangi masa depan pendidikan Indonesia. Mari
+          bergandeng tangan, berbagi peran, dan membawa perubahan nyata dari
+          pelosok ke pusat negeri.
         </p>
       </div>
 
