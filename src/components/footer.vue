@@ -13,6 +13,8 @@
             <a href=""
                 class="relative text-gray-800 font-medium hover:text-blue-500 after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-full after:bg-blue-500 after:scale-x-0 after:origin-left hover:after:scale-x-100 after:transition-transform after:duration-500">Article</a>
             <a href=""
+                class="relative text-gray-800 font-medium hover:text-blue-500 after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-full after:bg-blue-500 after:scale-x-0 after:origin-left hover:after:scale-x-100 after:transition-transform after:duration-500">Forum Diskusi</a>
+            <a href=""
                 class="relative text-gray-800 font-medium hover:text-blue-500 after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-full after:bg-blue-500 after:scale-x-0 after:origin-left hover:after:scale-x-100 after:transition-transform after:duration-500">Profile</a>
         </div>
 
