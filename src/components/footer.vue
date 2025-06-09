@@ -4,17 +4,17 @@
     <div class="flex flex-col gap-10 pb-10">
 
         <div class="links flex flex-wrap justify-center gap-4 mb-4">
-            <a href=""
+            <a href="/"
                 class="relative text-gray-800 font-medium hover:text-blue-500 after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-full after:bg-blue-500 after:scale-x-0 after:origin-left hover:after:scale-x-100 after:transition-transform after:duration-500">Home</a>
-            <a href=""
+            <a href="/list_relawan"
                 class="relative text-gray-800 font-medium hover:text-blue-500 after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-full after:bg-blue-500 after:scale-x-0 after:origin-left hover:after:scale-x-100 after:transition-transform after:duration-500">Relawan</a>
-            <a href=""
+            <a href="/list_donasi"
                 class="relative text-gray-800 font-medium hover:text-blue-500 after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-full after:bg-blue-500 after:scale-x-0 after:origin-left hover:after:scale-x-100 after:transition-transform after:duration-500">Donasi</a>
-            <a href=""
+            <a href="/artikel"
                 class="relative text-gray-800 font-medium hover:text-blue-500 after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-full after:bg-blue-500 after:scale-x-0 after:origin-left hover:after:scale-x-100 after:transition-transform after:duration-500">Article</a>
-            <a href=""
+            <a href="/forum-diskusi"
                 class="relative text-gray-800 font-medium hover:text-blue-500 after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-full after:bg-blue-500 after:scale-x-0 after:origin-left hover:after:scale-x-100 after:transition-transform after:duration-500">Forum Diskusi</a>
-            <a href=""
+            <a href="/profile"
                 class="relative text-gray-800 font-medium hover:text-blue-500 after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-full after:bg-blue-500 after:scale-x-0 after:origin-left hover:after:scale-x-100 after:transition-transform after:duration-500">Profile</a>
         </div>
 

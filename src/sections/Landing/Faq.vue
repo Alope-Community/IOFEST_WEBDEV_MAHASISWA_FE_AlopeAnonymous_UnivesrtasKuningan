@@ -71,6 +71,11 @@ export default {
           answer:
             "Ya, relawan dan donatur yang berpartisipasi akan mendapatkan sertifikat sebagai bentuk apresiasi.",
         },
+        {
+          question: "Apakah saya bisa mengusulkan program relawan di daerah saya?",
+          answer:
+            "Tentu saja. Kami sangat terbuka terhadap inisiatif dari masyarakat. Anda bisa mengajukan usulan program melalui menu “Login Komunitas” dan tim kami akan meninjau serta berdiskusi lebih lanjut untuk merealisasikannya.",
+        },
       ],
     };
   },

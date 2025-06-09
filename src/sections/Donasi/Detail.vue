@@ -8,7 +8,7 @@
         class="border border-gray-300 rounded-[15px] shadow-xl overflow-hidden"
       >
         <img
-          src="/images/relawan/3.jpg"
+          src="https://kitabisa.com/_next/image?url=https%3A%2F%2Fimgix.kitabisa.com%2Fe7529a6b-6170-496b-b742-52383a7553ab.jpg%3Fauto%3Dformat%26fm%3Dpjpg%26ch%3DWidth%2CDPR%2CSave-Data%2CViewport-Width&w=1080&q=75"
           alt="Volunteer"
           class="w-full rounded-[15px] object-cover h-72"
         />
@@ -16,12 +16,12 @@
           <span
             class="bg-blue-500/20 text-blue-500 font-semibold px-5 py-3 rounded text-lg mx-1 mb-2 inline-block"
           >
-            Mengajar
+           Sekolah
           </span>
           <span
             class="bg-blue-500/20 text-blue-500 font-semibold px-5 py-3 rounded text-lg mx-1 mb-2 inline-block"
           >
-            Sharing
+            Dhuafa
           </span>
         </div>
       </div>
@@ -40,7 +40,7 @@
         </button>
         <!-- Program Title -->
         <h1 class="md:text-2xl text-xl font-bold text-gray-800">
-          AYO MENGAJAR INDONESIA – Batch 14!
+          Wujudkan 100+ Siswa Dhuafa Bisa Lanjutkan Sekolah
         </h1>
 
         <!-- Deskripsi Program -->
@@ -48,12 +48,7 @@
           Deskripsi
         </h2>
         <p class="text-gray-700 my-5 text-lg">
-          🌟 Yogyakarta 🌟 🔥 *Punya semangat mengajar?* 🔥 *Ingin jadi bagian
-          dari perubahan?* 👉 *Ayo, waktunya ambil peran untuk masa depan
-          pendidikan Indonesia!* ✨ Bergabunglah bersama *Ayo Mengajar
-          Indonesia* di Batch 14 ini. Jadilah relawan pendidik yang tak hanya
-          menginspirasi, tapi juga menggerakkan semangat belajar hingga ke
-          pelosok negeri!
+        Pendidikan adalah investasi terbaik untuk masa depan. Sayangnya, data dari Kementerian Pendidikan dan Riset tahun 2021 menunjukkan bahwa hanya 14% dari 1,4 juta ruang kelas di Indonesia yang dalam kondisi baik. Kondisi ini diperparah oleh terbatasnya fasilitas pendidikan berkualitas, yang menghambat pengembangan potensi siswa dan guru secara optimal. z
         </p>
 
         <!-- Program Time -->
@@ -64,7 +59,7 @@
           <i
             class="fa-regular fa-calendar-days md:text-2xl text-lg rounded-lg p-2 text-gray-700"
           ></i>
-          <p class="text-lg text-gray-700">15 April 2025 - 14 Mei 2025</p>
+          <p class="text-lg text-gray-700">-</p>
         </div>
 
         <!-- Contact Section -->
@@ -75,13 +70,13 @@
           <i
             class="fa-brands fa-instagram md:text-2xl text-lg rounded-lg p-2 text-gray-700"
           ></i>
-          <p class="text-lg text-gray-700">@ayo_mengajar</p>
+          <p class="text-lg text-gray-700">@samalm_setara</p>
         </div>
         <div class="flex items-center mb-3 gap-3">
-          <i
+          <!-- <i
             class="fa-solid fa-phone md:text-2xl text-lg rounded-lg p-2 text-gray-700"
           ></i>
-          <p class="text-lg text-gray-700">0858-1925-1978 (Kiki Zakiyah)</p>
+          <p class="text-lg text-gray-700">0858-1925-1978 (Kiki Zakiyah)</p> -->
         </div>
 
         <!-- Register Button -->

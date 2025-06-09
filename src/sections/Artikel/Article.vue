@@ -15,10 +15,10 @@
           class="w-full md:w-[350px] h-[250px] object-cover rounded-md"
         />
         <div>
-          <p class="text-xs font-bold uppercase text-blue-500 mb-1">
+          <p class="text-sm font-bold uppercase text-blue-500 mb-1">
             {{ article.category }}
           </p>
-          <h3 class="text-lg font-bold text-gray-800">
+          <h3 class="text-XL font-bold text-gray-800">
             {{ article.title }}
           </h3>
           <p class="text-sm text-gray-600 mt-2">{{ article.description }}</p>
@@ -59,33 +59,34 @@
 const articles = [
   {
     category: "RELAWAN",
-    title: "Aksi Bersih Pantai Serentak: Butuh 100 Relawan!",
+    title: "Baduy Mengajar!",
     description:
-      "Bergabunglah dalam kegiatan bersih-bersih pantai di pesisir utara Jawa.",
+      "Bergabunglah dalam keseruan kegiatan baduy mengajar.",
     location: "Karawang, Jawa Barat",
     date: "25 Mei 2025",
-    image: "/images/page/a.jpg",
+    image: "/images/relawan/1.jpg",
     link: "/program-relawan/aksi-bersih-pantai",
   },
   {
-    category: "DONASI",
-    title: "Penggalangan Dana untuk Pendidikan Anak Pelosok",
-    description:
-      "Bantu adik-adik kita mendapatkan akses pendidikan melalui donasi buku dan alat tulis.",
-    location: "Wamena, Papua",
-    date: "1 Juni 2025",
-    image: "/images/page/a.jpg",
-    link: "/program-donasi/pendidikan-anak-pelosok",
-  },
-  {
-    category: "DONASI",
-    title: "Penggalangan Dana untuk Pendidikan Anak Pelosok",
-    description:
-      "Bantu anak-anak di daerah terpencil mendapatkan akses pendidikan dengan mendonasikan buku, alat tulis, atau dana.",
-    location: "Wamena, Papua",
-    date: "20 Juni 2025",
-    image: "/images/page/a.jpg",
-    link: "/program-donasi/pendidikan-anak-pelosok",
-  },
+  category: "DONASI",
+  title: "Bantu Pendidikan Anak-Anak di Daerah Terpencil",
+  description:
+    "Mari dukung adik-adik di pelosok nusantara mendapatkan pendidikan yang layak melalui donasi buku dan perlengkapan sekolah.",
+  location: "Wamena, Papua",
+  date: "1 Juni 2025",
+  image: "/images/galeri/2.jpg",
+  link: "/program-donasi/pendidikan-anak-pelosok",
+},
+{
+  category: "DONASI",
+  title: "Dukung Akses Belajar untuk Anak-Anak Papua",
+  description:
+    "Kontribusimu sangat berarti untuk menghadirkan buku, alat tulis, atau bantuan dana demi pendidikan anak-anak di wilayah terpencil.",
+  location: "Wamena, Papua",
+  date: "20 Juni 2025",
+  image: "/images/galeri/5.jpg",
+  link: "/program-donasi/pendidikan-anak-pelosok",
+},
+
 ];
 </script>

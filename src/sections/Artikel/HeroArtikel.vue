@@ -27,7 +27,7 @@
       <div class="md:grid hidden xl:grid-cols-1 grid-cols-2 xl:gap-0 gap-10">
         <div>
           <img
-            src="/images/page/program.png"
+            src="/images/galeri/9.jpg"
             class="rounded object-cover w-full xl:h-[250px] h-[230px]"
             alt="Program Pijar"
           />

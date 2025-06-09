@@ -8,7 +8,8 @@
     ]"
   >
     <div class="container mx-auto flex justify-between items-center">
-      <div class="text-2xl font-bold text-blue-500">
+      <div class="flex items-center space-x-1 text-2xl font-bold text-blue-500">
+        <img src="/images/logo.png" alt="Logo" class="w-12 h-12" />
         <RouterLink to="/">Pijar Nusantara</RouterLink>
       </div>
 
