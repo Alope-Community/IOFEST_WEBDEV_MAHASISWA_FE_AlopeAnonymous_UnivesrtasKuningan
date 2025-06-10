@@ -13,9 +13,12 @@
       </div>
 
       <!-- Desktop Menu -->
-      <div class="hidden md:flex space-x-4">
+      <div v-if="isAuthenticated == 'false' || isAuthenticatedFromNav == 'false'" class="hidden md:flex space-x-4">
         <Button link="/login" title="Login" />
         <Button link="/register" title="Register" />
+      </div>
+      <div v-else>
+        Logout
       </div>
 
       <!-- Mobile Menu Toggle -->
@@ -44,7 +47,7 @@
         class="md:hidden bg-white text-blue-500 p-4 space-y-3 border-t border-gray-300"
       >
         <!-- Mobile Buttons -->
-        <div class="flex flex-col space-y-4">
+        <div v-if="isAuthenticated == 'false' || isAuthenticatedFromNav == 'false'" class="flex flex-col space-y-4">
           <RouterLink
             to="/login"
             class="w-full border border-blue-500 text-blue-500 font-medium py-2 px-4 rounded-lg hover:bg-blue-500 hover:text-white transition duration-300 text-center"
@@ -58,6 +61,9 @@
             Register
           </RouterLink>
         </div>
+      <div v-else>
+        Logout
+      </div>
       </div>
     </transition>
   </nav>
@@ -68,6 +74,7 @@ import Button from "./button.vue";
 import IconHamburger from "./icons/hamburger.vue";
 
 export default {
+  props: ["isAuthenticated"],
   components: {
     Button,
     IconHamburger,
@@ -76,6 +83,8 @@ export default {
     return {
       menuOpen: false,
       isScrolled: false,
+
+      isAuthenticatedFromNav: "false"
     };
   },
   methods: {
@@ -88,6 +97,10 @@ export default {
   },
   mounted() {
     window.addEventListener("scroll", this.handleScroll);
+
+    setInterval(() => {
+      this.isAuthenticatedFromNav = localStorage.getItem("isAuthenticated");
+    }, 100);
   },
   beforeDestroy() {
     window.removeEventListener("scroll", this.handleScroll);

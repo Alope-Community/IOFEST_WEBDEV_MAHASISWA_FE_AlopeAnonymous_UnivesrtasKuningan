@@ -8,20 +8,15 @@
         class="border border-gray-300 rounded-[15px] shadow-xl overflow-hidden"
       >
         <img
-          src="https://kitabisa.com/_next/image?url=https%3A%2F%2Fimgix.kitabisa.com%2Fe7529a6b-6170-496b-b742-52383a7553ab.jpg%3Fauto%3Dformat%26fm%3Dpjpg%26ch%3DWidth%2CDPR%2CSave-Data%2CViewport-Width&w=1080&q=75"
-          alt="Volunteer"
+          :src="donasi.gambar"
+          :alt="donasi.title"
           class="w-full rounded-[15px] object-cover h-72"
         />
         <div class="my-4 mx-2 text-center">
           <span
             class="bg-blue-500/20 text-blue-500 font-semibold px-5 py-3 rounded text-lg mx-1 mb-2 inline-block"
           >
-           Sekolah
-          </span>
-          <span
-            class="bg-blue-500/20 text-blue-500 font-semibold px-5 py-3 rounded text-lg mx-1 mb-2 inline-block"
-          >
-            Dhuafa
+           {{ donasi.category }}
           </span>
         </div>
       </div>
@@ -40,7 +35,7 @@
         </button>
         <!-- Program Title -->
         <h1 class="md:text-2xl text-xl font-bold text-gray-800">
-          Wujudkan 100+ Siswa Dhuafa Bisa Lanjutkan Sekolah
+          {{ donasi.title }}
         </h1>
 
         <!-- Deskripsi Program -->
@@ -48,7 +43,7 @@
           Deskripsi
         </h2>
         <p class="text-gray-700 my-5 text-lg">
-        Pendidikan adalah investasi terbaik untuk masa depan. Sayangnya, data dari Kementerian Pendidikan dan Riset tahun 2021 menunjukkan bahwa hanya 14% dari 1,4 juta ruang kelas di Indonesia yang dalam kondisi baik. Kondisi ini diperparah oleh terbatasnya fasilitas pendidikan berkualitas, yang menghambat pengembangan potensi siswa dan guru secara optimal. z
+        {{ donasi.description }}
         </p>
 
         <!-- Program Time -->
@@ -56,10 +51,9 @@
           Waktu
         </h2>
         <div class="flex items-center my-3 gap-3">
-          <i
-            class="fa-regular fa-calendar-days md:text-2xl text-lg rounded-lg p-2 text-gray-700"
-          ></i>
-          <p class="text-lg text-gray-700">-</p>
+          <i class="fa-regular fa-calendar-days md:text-2xl text-lg rounded-lg p-2 text-gray-700">
+        </i>
+          <p class="text-lg text-gray-700">{{ donasi.tanggal_mulai }}- {{ donasi.tanggal_selesai }}</p>
         </div>
 
         <!-- Contact Section -->
@@ -70,7 +64,7 @@
           <i
             class="fa-brands fa-instagram md:text-2xl text-lg rounded-lg p-2 text-gray-700"
           ></i>
-          <p class="text-lg text-gray-700">@samalm_setara</p>
+          <p class="text-lg text-gray-700">{{ donasi.kontak }}</p>
         </div>
         <div class="flex items-center mb-3 gap-3">
           <!-- <i
@@ -91,3 +85,8 @@
     </div>
   </section>
 </template>
+<script>
+  export default {
+  props: ["donasi"],
+  }
+</script>

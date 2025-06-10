@@ -34,7 +34,7 @@
           />
           <div class="lg:p-6 p-4 flex flex-col">
             <h3 class="text-xl font-semibold mb-4">{{ relawan.title }}</h3>
-            <Button link="/" title="Daftar Sekarang" />
+            <a :href="'detail-relawan/'+relawan.id">Daftar</a>
           </div>
         </div>
       </div>
@@ -69,8 +69,6 @@ export default {
           ...item,
           image_url: `${baseUrl}/storage/${item.image_url}`
         }));
-
-        console.log(this.relawans);
       } catch (error) {
         console.error("Gagal mengambil data program:", error);
       }

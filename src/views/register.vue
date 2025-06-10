@@ -33,7 +33,8 @@
         </h2>
 
         <!-- Form -->
-        <form>
+         {{ formData }}
+        <form action="" method="POST" @submit.prevent="postRegister">
           <!-- Name -->
           <div class="mb-4">
             <label for="name" class="block text-sm font-medium text-gray-700">
@@ -47,6 +48,7 @@
                 placeholder="Nama"
                 class="pl-10 w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                 required
+                v-model="formData.name"
               />
             </div>
           </div>
@@ -64,6 +66,7 @@
                 placeholder="Email"
                 class="pl-10 w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                 required
+                v-model="formData.email"
               />
             </div>
           </div>
@@ -84,6 +87,7 @@
                 placeholder="Password"
                 class="pl-10 w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                 required
+                v-model="formData.password"
               />
             </div>
           </div>
@@ -104,12 +108,13 @@
                 placeholder="Konfirmasi Password"
                 class="pl-10 w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                 required
+                v-model="formData.password_confirmation"
               />
             </div>
           </div>
 
           <!-- Submit Button -->
-          <Button link="/" title="Registrasi" class="w-full" />
+          <button type="submit" class="w-full">Register</button>
         </form>
 
         <!-- Login Redirect -->
@@ -124,9 +129,35 @@
 
 <script>
 import Button from "./../components/button.vue";
+import axios from "axios";
+
 export default {
   components: {
     Button,
+  },
+  data(){
+    return{
+      formData: {
+        name: "",
+        email: "",
+        password:"",
+        password_confirmation: ""
+      }
+    }
+  },
+  methods: {
+    async postRegister() {
+      try {
+        const baseUrl = import.meta.env.VITE_API_BASE_URL;
+        const response = await axios.post(`${baseUrl}/api/register`, this.formData);
+
+        axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+
+        // this.$router.push("/");
+      } catch (error) {
+        console.error("Gagal mengambil data program:", error);
+      }
+    },
   },
 };
 </script>

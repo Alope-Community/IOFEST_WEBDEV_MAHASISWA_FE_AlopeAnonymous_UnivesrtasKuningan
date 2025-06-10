@@ -27,7 +27,10 @@
         </button>
 
         <h2 class="text-2xl font-bold text-gray-800 text-center mb-6">Login</h2>
-        <form>
+
+        {{ formData }}
+
+        <form action="" method="POST" @submit.prevent="postLogin">
           <!-- Email -->
           <div class="mb-4">
             <label for="email" class="block text-sm font-medium text-gray-700">
@@ -41,6 +44,7 @@
                 placeholder="Email"
                 class="pl-10 w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                 required
+                v-model="formData.email"
               />
             </div>
           </div>
@@ -61,12 +65,13 @@
                 placeholder="Password"
                 class="pl-10 w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                 required
+                v-model="formData.password"
               />
             </div>
           </div>
 
           <!-- Submit Button -->
-          <Button link="/" title="Login" class="w-full" />
+          <button type="submit" class="w-full">LOGIN</button>
         </form>
 
         <!-- Links -->
@@ -86,9 +91,40 @@
 </template>
 <script>
 import Button from "./../components/button.vue";
+import axios from "axios";
+
 export default {
   components: {
     Button,
+  },
+  data(){
+    return{
+      formData: {
+        email: "",
+        password:""
+      }
+    }
+  },
+  methods: {
+    async postLogin() {
+      try {
+        const baseUrl = import.meta.env.VITE_API_BASE_URL;
+        const response = await axios.post(`${baseUrl}/api/login`, this.formData);
+
+        const token = response.data.token;
+        localStorage.setItem("token", token);
+
+        axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+        
+        localStorage.setItem("isAuthenticated", true)
+
+        setTimeout(() => {
+          this.$router.push("/"); 
+        }, 500);
+      } catch (error) {
+        console.error("Gagal mengambil data program:", error);
+      }
+    },
   },
 };
 </script>

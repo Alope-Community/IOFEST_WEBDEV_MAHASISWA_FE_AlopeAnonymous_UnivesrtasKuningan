@@ -8,20 +8,15 @@
         class="border border-gray-300 rounded-[15px] shadow-xl overflow-hidden"
       >
         <img
-          src="/images/relawan/3.jpg"
-          alt="Volunteer"
+          :src="relawan.gambar"
+          alt="relawan.title"
           class="w-full rounded-[15px] object-cover h-72"
         />
         <div class="my-4 mx-2 text-center">
           <span
             class="bg-blue-500/20 text-blue-500 font-semibold px-5 py-3 rounded text-lg mx-1 mb-2 inline-block"
           >
-            Mengajar
-          </span>
-          <span
-            class="bg-blue-500/20 text-blue-500 font-semibold px-5 py-3 rounded text-lg mx-1 mb-2 inline-block"
-          >
-            Sharing
+            {{ relawan.category }}
           </span>
         </div>
       </div>
@@ -40,7 +35,7 @@
         </button>
         <!-- Program Title -->
         <h1 class="md:text-2xl text-xl font-bold text-gray-800">
-          AYO MENGAJAR INDONESIA – Batch 14!
+          {{ relawan.title }}
         </h1>
 
         <!-- Deskripsi Program -->
@@ -48,12 +43,7 @@
           Deskripsi
         </h2>
         <p class="text-gray-700 my-5 text-lg">
-          🌟 Yogyakarta 🌟 🔥 *Punya semangat mengajar?* 🔥 *Ingin jadi bagian
-          dari perubahan?* 👉 *Ayo, waktunya ambil peran untuk masa depan
-          pendidikan Indonesia!* ✨ Bergabunglah bersama *Ayo Mengajar
-          Indonesia* di Batch 14 ini. Jadilah relawan pendidik yang tak hanya
-          menginspirasi, tapi juga menggerakkan semangat belajar hingga ke
-          pelosok negeri!
+          {{ relawan.description }}
         </p>
 
         <!-- Program Time -->
@@ -64,8 +54,9 @@
           <i
             class="fa-regular fa-calendar-days md:text-2xl text-lg rounded-lg p-2 text-gray-700"
           ></i>
-          <p class="text-lg text-gray-700">15 April 2025 - 14 Mei 2025</p>
+          <p class="text-lg text-gray-700">{{ relawan.tanggal_mulai }} - {{ relawan.tanggal_selesai }}</p>
         </div>
+
 
         <!-- Contact Section -->
         <h2 class="md:text-2xl text-xl font-semibold mt-5 text-blue-500">
@@ -75,13 +66,7 @@
           <i
             class="fa-brands fa-instagram md:text-2xl text-lg rounded-lg p-2 text-gray-700"
           ></i>
-          <p class="text-lg text-gray-700">@ayo_mengajar</p>
-        </div>
-        <div class="flex items-center mb-3 gap-3">
-          <i
-            class="fa-solid fa-phone md:text-2xl text-lg rounded-lg p-2 text-gray-700"
-          ></i>
-          <p class="text-lg text-gray-700">0858-1925-1978 (Kiki Zakiyah)</p>
+          <p class="text-lg text-gray-700">{{ relawan.kontak }}</p>
         </div>
 
         <!-- Register Button -->
@@ -96,3 +81,9 @@
     </div>
   </section>
 </template>
+
+<script>
+export default{
+  props: ["relawan"],
+}
+</script>

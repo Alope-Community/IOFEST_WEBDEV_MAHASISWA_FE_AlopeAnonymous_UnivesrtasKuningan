@@ -38,12 +38,12 @@ const router = createRouter({
       component: profile,
     },
     {
-      path: "/detail-relawan",
+      path: "/detail-relawan/:id",
       name: "datailRelawan",
       component: detailRelawan,
     },
     {
-      path: "/detail-donasi",
+      path: "/detail-donasi/:id",
       name: "datailDonasi",
       component: detailDonasi,
     },

@@ -14,17 +14,16 @@
               <i class="fas fa-user text-primary text-2xl"></i>
             </div>
             <div class="ml-4">
-              <p class="font-medium">Nama Pengguna</p>
-              <p class="text-sm text-gray-600">email@contoh.com</p>
+              <p class="font-medium">{{ profile.name }}</p>
+              <p class="text-sm text-gray-600">{{ profile.email }}</p>
             </div>
           </div>
 
           <p class="text-sm font-bold text-gray-900">
-            <i class="fa-regular fa-calendar-days"></i> Tanggal Bergabung : 10
-            Mei 2025
+            <i class="fa-regular fa-calendar-days"></i> Tanggal Bergabung : {{ profile.created_at }}
           </p>
           <p class="text-sm font-bold text-gray-900 mt-2">
-            <i class="fas fa-trophy text-yellow-500 mr-1"></i> Poin: 150
+            <i class="fas fa-trophy text-yellow-500 mr-1"></i> Poin: {{ profile.point }}
           </p>
           <!-- Poin added here -->
         </div>
@@ -93,19 +92,19 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr class="text-center">
-                    <td>1</td>
-                    <td>Program Mengajar Desa</td>
-                    <td>10 Mei 2025</td>
-                    <td>15 Mei 2025</td>
-                    <td>15 Juni 2025</td>
+                  <tr
+                  v-for="(relawan, index) in riwayatRelawan"
+                  class="text-center">
+                  <td>{{ index+1 }}</td>
+                    <td>{{ relawan.judul }}</td>
+                    <td>{{ relawan.tanggal_bergabung }}</td>
+                    <td>{{ relawan.tanggal_mulai }}</td>
+                    <td>{{ relawan.tanggal_selesai }}</td>
                     <td>
-                      <button
-                        @click="showModal = true"
-                        class="text-blue-500 hover:text-blue-700 font-medium"
-                      >
-                        <i class="fas fa-certificate mr-1"></i>Lihat Sertifikat
-                      </button>
+                      <a :href="baseUrl + relawan.sertifikat_url" target="_blank" class="text-blue-500 hover:text-blue-700 font-medium">
+                        <i class="fas fa-certificate mr-1"></i>
+                        Lihat Sertifikat
+                      </a>
                     </td>
                   </tr>
                 </tbody>
@@ -120,7 +119,8 @@
             <div class="overflow-x-auto">
               <table class="w-full border-collapse border border-gray-200">
                 <thead>
-                  <tr class="bg-gray-50">
+                  <tr
+                  class="bg-gray-50">
                     <th class="border border-gray-200 p-2 text-sm text-center">
                       No
                     </th>
@@ -139,12 +139,14 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr class="text-center">
-                    <td>1</td>
-                    <td>Bantu Anak Sekolah</td>
-                    <td>20 April 2025</td>
-                    <td>25 April 2025</td>
-                    <td>25 Mei 2025</td>
+                  <tr
+                  v-for="(donasi, index) in riwayatDonasi"
+                  class="text-center">
+                    <td>{{ index+1 }}</td>
+                    <td>{{ donasi.judul}}</td>
+                    <td>{{ donasi.tanggal_donasi }}</td>
+                    <td>{{ donasi.tanggal_mulai }}</td>
+                    <td>{{ donasi.tanggal_selesai }}</td>
                   </tr>
                 </tbody>
               </table>
@@ -185,12 +187,44 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   data() {
     return {
       showModal: false,
       activeTab: "relawan", // Tab yang aktif (default 'relawan')
+      profile: [],
+      riwayatRelawan: [],
+      riwayatDonasi: [],
+      baseUrl: ""
     };
+  },
+    mounted() {
+    this.fetchProfile();
+    this.baseUrl = import.meta.env.VITE_API_BASE_URL + '/';
+  },
+  methods: {
+    async fetchProfile() {
+      try {
+        const baseUrl = import.meta.env.VITE_API_BASE_URL;
+        const token = localStorage.getItem("token");
+        const response = await axios.get(`${baseUrl}/api/profile`,{
+            headers: {
+              Authorization: `Bearer ${token}`
+            }
+      });
+
+      this.profile = response.data.user;
+      this.riwayatRelawan = response.data.riwayat_relawan;
+
+      this.riwayatDonasi = response.data.riwayat_donasi;
+      console.log(this.riwayatDonasi);
+      
+      } catch (error) {
+        console.error("Gagal mengambil data program:", error);
+      }
+    },
   },
 };
 </script>

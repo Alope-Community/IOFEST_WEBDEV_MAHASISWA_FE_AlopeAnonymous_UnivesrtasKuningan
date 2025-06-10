@@ -36,7 +36,7 @@
           />
           <div class="lg:p-6 p-4 flex flex-col">
             <h3 class="text-xl font-semibold mb-4">{{ donasi.title }}</h3>
-            <Button link="/" title="Daftar Sekarang" />
+            <a :href="'detail-donasi/'+donasi.id">Daftar</a>
           </div>
         </div>
       </div>
@@ -46,7 +46,7 @@
 
 <script>
 import axios from "axios";
-import Button from "../../components/button.vue"; // ganti path sesuai struktur file kamu
+import Button from "../../components/button.vue";
 
 export default {
   name: "ProgramSection",
