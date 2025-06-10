@@ -21,11 +21,11 @@
       <!-- Form Section -->
       <div class="w-full md:w-1/2 p-6">
         <!-- Back Button -->
-        <button
+        <RouterLink to="/"
           class="flex items-center mb-2 text-primary font-bold hover:text-blue-500 transition duration-300"
         >
           <i class="fas fa-arrow-left mr-2"></i> Kembali
-        </button>
+        </RouterLink>
 
         <!-- Title -->
         <h2 class="text-2xl font-bold text-gray-800 text-center mb-3">
@@ -123,6 +123,7 @@
 </template>
 
 <script>
+import { RouterLink } from "vue-router";
 import Button from "./../components/button.vue";
 export default {
   components: {

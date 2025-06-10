@@ -32,35 +32,34 @@
     </div>
 
     <!-- Mobile Menu -->
-    <transition
-      enter-active-class="transition duration-300 ease-in-out"
-      enter-from-class="opacity-0 transform -translate-y-2"
-      enter-to-class="opacity-100 transform translate-y-0"
-      leave-active-class="transition duration-300 ease-in-out"
-      leave-from-class="opacity-100 transform translate-y-0"
-      leave-to-class="opacity-0 transform -translate-y-2"
-    >
-      <div
-        v-if="menuOpen"
-        class="md:hidden bg-white text-blue-500 p-4 space-y-3 border-t border-gray-300"
+<transition
+  enter-active-class="transition duration-300 ease-in-out"
+  enter-from-class="opacity-0 transform -translate-y-2"
+  enter-to-class="opacity-100 transform translate-y-0"
+  leave-active-class="transition duration-300 ease-in-out"
+  leave-from-class="opacity-100 transform translate-y-0"
+  leave-to-class="opacity-0 transform -translate-y-2"
+>
+  <div
+    v-if="menuOpen"
+    class="md:hidden absolute top-full left-0 right-0 bg-white text-blue-500 p-6 space-y-4 shadow-md border-t border-gray-200"
+  >
+    <div class="flex flex-col space-y-4">
+      <RouterLink
+        to="/login"
+        class="w-full border border-blue-500 text-blue-500 font-medium py-2 px-4 rounded-lg hover:bg-blue-500 hover:text-white transition duration-300 text-center"
       >
-        <!-- Mobile Buttons -->
-        <div class="flex flex-col space-y-4">
-          <RouterLink
-            to="/login"
-            class="w-full border border-blue-500 text-blue-500 font-medium py-2 px-4 rounded-lg hover:bg-blue-500 hover:text-white transition duration-300 text-center"
-          >
-            Login
-          </RouterLink>
-          <RouterLink
-            to="/register"
-            class="w-full border border-blue-500 text-blue-500 font-medium py-2 px-4 rounded-lg hover:bg-blue-500 hover:text-white transition duration-300 text-center"
-          >
-            Register
-          </RouterLink>
-        </div>
-      </div>
-    </transition>
+        Login
+      </RouterLink>
+      <RouterLink
+        to="/register"
+        class="w-full border border-blue-500 text-blue-500 font-medium py-2 px-4 rounded-lg hover:bg-blue-500 hover:text-white transition duration-300 text-center"
+      >
+        Register
+      </RouterLink>
+    </div>
+  </div>
+</transition>
   </nav>
 </template>
 

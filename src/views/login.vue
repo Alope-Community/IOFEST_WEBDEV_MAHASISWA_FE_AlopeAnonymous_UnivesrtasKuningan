@@ -20,11 +20,11 @@
 
       <!-- Login Form -->
       <div class="w-full md:w-1/2 p-6">
-        <button
+        <RouterLink to="/"
           class="flex items-center mb-6 text-primary font-bold hover:text-blue-500 transition duration-300"
         >
           <i class="fas fa-arrow-left mr-2"></i> Kembali
-        </button>
+        </RouterLink>
 
         <h2 class="text-2xl font-bold text-gray-800 text-center mb-6">Login</h2>
         <form>
@@ -85,6 +85,7 @@
   </div>
 </template>
 <script>
+import { RouterLink } from "vue-router";
 import Button from "./../components/button.vue";
 export default {
   components: {
