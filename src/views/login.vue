@@ -28,8 +28,6 @@
 
         <h2 class="text-2xl font-bold text-gray-800 text-center mb-6">Login</h2>
 
-        {{ formData }}
-
         <form action="" method="POST" @submit.prevent="postLogin">
           <!-- Email -->
           <div class="mb-4">

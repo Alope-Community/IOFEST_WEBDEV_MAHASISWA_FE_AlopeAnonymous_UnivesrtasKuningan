@@ -1,11 +1,11 @@
 <template>
   <section class="mt-20 px-5 sm:px-10 lg:px-24 font-primary">
     <!-- Tombol Kembali -->
-    <button
+    <a href="/list_relawan"
       class="flex items-center mb-6 text-primary font-bold hover:text-blue-500 transition duration-300"
     >
       <i class="fas fa-arrow-left mr-2"></i> Kembali
-    </button>
+  </a>
     <!-- Container Grid -->
     <div
       class="grid lg:grid-cols-2 gap-0 bg-white border border-blue-500  shadow-md rounded-lg overflow-hidden"
@@ -20,42 +20,16 @@
       </div>
 
       <!-- Formulir Kanan -->
-      <form @submit.prevent="submitForm" class="space-y-6 w-full p-8">
+      <form action="" method="POST" @submit.prevent="postDaftar" class="space-y-6 w-full p-8">
         <h2 class="text-3xl font-bold mb-2 text-gray-800">
           Formulir Pendaftaran Relawan
         </h2>
-
-        <!-- Nama -->
-        <div>
-          <label class="block text-gray-700 font-semibold mb-1"
-            >Nama Lengkap</label
-          >
-          <input
-            v-model="form.name"
-            type="text"
-            placeholder="Masukkan nama lengkap"
-            required
-            class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
-          />
-        </div>
-
-        <!-- Email -->
-        <div>
-          <label class="block text-gray-700 font-semibold mb-1">Email</label>
-          <input
-            v-model="form.email"
-            type="email"
-            placeholder="nama@email.com"
-            required
-            class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
-          />
-        </div>
 
         <!-- No HP -->
         <div>
           <label class="block text-gray-700 font-semibold mb-1">No. HP</label>
           <input
-            v-model="form.phone"
+            v-model="form.no_hp"
             type="tel"
             placeholder="+62..."
             required
@@ -69,7 +43,7 @@
             Motivasi Mengikuti Program Ini
           </label>
           <textarea
-            v-model="form.motivation"
+            v-model="form.motivasi"
             rows="4"
             placeholder="Tuliskan motivasi kamu..."
             required
@@ -79,7 +53,7 @@
 
         <!-- Tombol Submit -->
         <div class="text-center">
-          <Button link="/" title="Daftar Sekarang" class="w-full" />
+          <button type="submit" class="w-full">Daftar Sekarang</button>
         </div>
       </form>
     </div>
@@ -88,6 +62,7 @@
 
 <script>
 import Button from "../../components/button.vue";
+import axios from "axios";
 export default {
   components: {
     Button,
@@ -95,27 +70,31 @@ export default {
   data() {
     return {
       form: {
-        name: "",
-        email: "",
-        phone: "",
-        motivation: "",
+        program_donasi_id: this.$route.params.id,
+        no_hp: "",
+        motivasi: "",
       },
     };
   },
   methods: {
-    submitForm() {
-      // Ganti ini dengan logika penyimpanan/submit API jika diperlukan
-      console.log("Form Data:", this.form);
-      alert("Terima kasih! Pendaftaran kamu telah dikirim.");
-      this.form = {
-        name: "",
-        email: "",
-        phone: "",
-        motivation: "",
-      };
-    },
-    goBack() {
-      this.$router.go(-1); // Navigasi ke halaman sebelumnya
+    async postDaftar() {
+      try {
+        const baseUrl = import.meta.env.VITE_API_BASE_URL;
+        const token = localStorage.getItem("token");
+        console.log(this.form);
+        
+        const response = await axios.post(`${baseUrl}/api/relawan/daftar`, this.form,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`
+            }
+          }
+        );
+        this.$router.push("/profile"); 
+      } catch (error) {
+        alert("Anda sudah terdaftar di program ini");
+        console.error("Gagal mengambil data program:", error);
+      }
     },
   },
 };

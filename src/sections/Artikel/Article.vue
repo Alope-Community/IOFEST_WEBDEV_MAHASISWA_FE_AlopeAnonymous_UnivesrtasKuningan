@@ -4,31 +4,28 @@
   >
     <div class="lg:col-span-2 space-y-10">
       <router-link
-        v-for="(article, index) in articles"
+        v-for="(article, index) in artikels"
         :key="index"
-        :to="article.link"
+        :to="`/detail-artikel/${article.id}`"
         class="flex flex-col md:flex-row gap-6 border-b pb-6 p-2"
       >
         <img
-          :src="article.image"
+          :src="article.gambar"
           alt="Program"
           class="w-full md:w-[350px] h-[250px] object-cover rounded-md"
         />
         <div>
-          <p class="text-xs font-bold uppercase text-blue-500 mb-1">
-            {{ article.category }}
-          </p>
           <h3 class="text-lg font-bold text-gray-800">
-            {{ article.title }}
+            {{ article.judul }}
           </h3>
-          <p class="text-sm text-gray-600 mt-2">{{ article.description }}</p>
+          <p class="text-sm text-gray-600 mt-2">{{ article.konten }}</p>
           <div class="flex items-center text-gray-500 text-sm mt-3 space-x-4">
             <span class="flex items-center gap-1">
               <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                 <path d="M5.05 3.636a9 9 0 111.414 1.414L5.05 3.636z" />
                 <path d="M6.343 5.05a7 7 0 109.9 9.9 7 7 0 00-9.9-9.9z" />
               </svg>
-              {{ article.location }}
+              {{ article.lokasi }}
             </span>
             <span class="flex items-center gap-1">
               <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
@@ -36,7 +33,7 @@
                   d="M6 2a1 1 0 000 2h1v2a1 1 0 102 0V4h2v2a1 1 0 102 0V4h1a1 1 0 100-2H6zM4 7a1 1 0 000 2h12a1 1 0 100-2H4zm-1 3a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm2 4a1 1 0 100 2h10a1 1 0 100-2H5z"
                 />
               </svg>
-              {{ article.date }}
+              {{ article.tanggal_diterbitkan }}
             </span>
           </div>
         </div>
@@ -55,37 +52,38 @@
   </div>
 </template>
 
-<script setup>
-const articles = [
-  {
-    category: "RELAWAN",
-    title: "Aksi Bersih Pantai Serentak: Butuh 100 Relawan!",
-    description:
-      "Bergabunglah dalam kegiatan bersih-bersih pantai di pesisir utara Jawa.",
-    location: "Karawang, Jawa Barat",
-    date: "25 Mei 2025",
-    image: "/images/page/a.jpg",
-    link: "/program-relawan/aksi-bersih-pantai",
+<script>
+import { RouterLink } from "vue-router";
+import axios from "axios";
+export default {
+  components: { RouterLink },
+  data() {
+    return {
+      artikels: [],
+    };
   },
-  {
-    category: "DONASI",
-    title: "Penggalangan Dana untuk Pendidikan Anak Pelosok",
-    description:
-      "Bantu adik-adik kita mendapatkan akses pendidikan melalui donasi buku dan alat tulis.",
-    location: "Wamena, Papua",
-    date: "1 Juni 2025",
-    image: "/images/page/a.jpg",
-    link: "/program-donasi/pendidikan-anak-pelosok",
+  computed: {
   },
-  {
-    category: "DONASI",
-    title: "Penggalangan Dana untuk Pendidikan Anak Pelosok",
-    description:
-      "Bantu anak-anak di daerah terpencil mendapatkan akses pendidikan dengan mendonasikan buku, alat tulis, atau dana.",
-    location: "Wamena, Papua",
-    date: "20 Juni 2025",
-    image: "/images/page/a.jpg",
-    link: "/program-donasi/pendidikan-anak-pelosok",
+  methods: {
+    async fetchArtikel() {
+      try {
+        const baseUrl = import.meta.env.VITE_API_BASE_URL;
+        const artikelResponse = await axios.get(`${baseUrl}/api/artikel`);
+        
+        this.artikels = artikelResponse.data.data;
+        
+
+        this.artikels = artikelResponse.data.data.map(item => ({
+          ...item,
+          gambar: `${baseUrl}/storage/${item.gambar}`
+        }));
+      } catch (error) {
+        console.error("Gagal mengambil data program:", error);
+      }
+    },
   },
-];
+  mounted() {
+    this.fetchArtikel();
+  },
+};
 </script>

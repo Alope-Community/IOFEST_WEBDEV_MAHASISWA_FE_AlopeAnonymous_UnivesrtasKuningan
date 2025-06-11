@@ -28,11 +28,14 @@
     >
       <div class="md:my-5 md:mx-10 my-5 mx-5">
         <!-- Back Button -->
+        <!-- Tombol Kembali -->
         <button
+          @click="$router.back()"
           class="flex items-center mb-6 text-primary font-bold hover:text-blue-500 transition duration-300"
         >
           <i class="fas fa-arrow-left mr-2"></i> Kembali
         </button>
+
         <!-- Program Title -->
         <h1 class="md:text-2xl text-xl font-bold text-gray-800">
           {{ relawan.title }}
@@ -71,11 +74,13 @@
 
         <!-- Register Button -->
         <div class="flex justify-center mb-5">
-          <button
-            class="border border-blue-500 text-blue-500 px-6 py-3 mt-4 rounded-md font-bold hover:bg-blue-500 hover:text-white transition duration-300"
-          >
-            Daftar Sekarang
-          </button>
+        <router-link
+          :to="`/daftar-relawan/${relawan.id}`"
+          class="border border-blue-500 text-blue-500 px-6 py-3 mt-4 rounded-md font-bold hover:bg-blue-500 hover:text-white transition duration-300 text-center"
+        >
+          Daftar Sekarang
+        </router-link>
+
         </div>
       </div>
     </div>

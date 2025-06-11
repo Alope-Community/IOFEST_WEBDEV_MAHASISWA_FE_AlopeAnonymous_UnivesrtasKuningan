@@ -3,8 +3,8 @@
     :class="[
       'fixed top-0 w-full z-50 px-6 md:px-16 lg:px-20 p-4 transition duration-300',
       isScrolled
-        ? 'bg-white bg-opacity-5 backdrop-blur-lg shadow-md' // Saat di-scroll
-        : 'bg-opacity-100 shadow-none', // Sebelum di-scroll (ada background)
+        ? 'bg-white bg-opacity-5 backdrop-blur-lg shadow-md'
+        : 'bg-opacity-100 shadow-none',
     ]"
   >
     <div class="container mx-auto flex justify-between items-center">
@@ -17,9 +17,23 @@
         <Button link="/login" title="Login" />
         <Button link="/register" title="Register" />
       </div>
-      <div v-else>
-        Logout
+      <div v-else class="hidden md:flex space-x-4">
+        <RouterLink
+          to="/profile"
+          class="flex items-center gap-2 border border-blue-500 text-blue-500 font-medium py-2 px-4 rounded-lg hover:bg-blue-500 hover:text-white transition duration-300"
+        >
+          <i class="fa-solid fa-user"></i>
+          <span>Profile</span>
+        </RouterLink>
+        <div
+          class="flex items-center gap-2 border border-blue-500 text-blue-500 font-medium py-2 px-4 rounded-lg hover:bg-blue-500 hover:text-white transition duration-300"
+        >
+          <i class="fa-solid fa-right-from-bracket"></i>
+          <button @click="logout">Logout</button>
       </div>
+      </div>
+
+
 
       <!-- Mobile Menu Toggle -->
       <div class="md:hidden">
@@ -61,9 +75,21 @@
             Register
           </RouterLink>
         </div>
-      <div v-else>
-        Logout
-      </div>
+      <div v-else class="flex flex-col space-y-4">
+          <RouterLink
+            to="/profile"
+            class="flex items-center justify-center gap-2 border border-blue-500 text-blue-500 font-medium py-2 px-4 rounded-lg hover:bg-blue-500 hover:text-white transition duration-300"
+          >
+            <i class="fa-solid fa-user"></i>
+            <span>Profile</span>
+          </RouterLink>
+          <div
+            class="flex items-center justify-center gap-2 border border-blue-500 text-blue-500 font-medium py-2 px-4 rounded-lg hover:bg-blue-500 hover:text-white transition duration-300"
+          >
+            <i class="fa-solid fa-right-from-bracket"></i>
+            <button @click="logout">Logout</button>
+        </div>
+        </div>
       </div>
     </transition>
   </nav>
@@ -88,6 +114,10 @@ export default {
     };
   },
   methods: {
+    logout() {
+      localStorage.clear();
+      window.location.replace('/');
+    },
     toggleMenu() {
       this.menuOpen = !this.menuOpen;
     },

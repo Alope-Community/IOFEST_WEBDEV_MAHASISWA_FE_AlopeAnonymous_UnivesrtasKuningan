@@ -22,34 +22,8 @@
       </div>
 
       <!-- Formulir Donasi -->
-      <form @submit.prevent="submitForm" class="space-y-6 w-full p-8">
+      <form action="" method="POST" @submit.prevent="postDaftar" class="space-y-6 w-full p-8">
         <h2 class="text-3xl font-bold mb-2 text-gray-800">Formulir Donasi</h2>
-
-        <!-- Nama -->
-        <div>
-          <label class="block text-gray-700 font-semibold mb-1"
-            >Nama Lengkap</label
-          >
-          <input
-            v-model="form.name"
-            type="text"
-            placeholder="Masukkan nama lengkap"
-            required
-            class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
-          />
-        </div>
-
-        <!-- Email -->
-        <div>
-          <label class="block text-gray-700 font-semibold mb-1">Email</label>
-          <input
-            v-model="form.email"
-            type="email"
-            placeholder="nama@email.com"
-            required
-            class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
-          />
-        </div>
 
         <!-- Nominal Donasi -->
         <div>
@@ -57,7 +31,7 @@
             >Nominal Donasi</label
           >
           <input
-            v-model="form.amount"
+            v-model="form.nominal"
             type="number"
             placeholder="Contoh: 50000"
             required
@@ -71,7 +45,7 @@
             Ucapan atau Harapan
           </label>
           <textarea
-            v-model="form.message"
+            v-model="form.ucapan"
             rows="4"
             placeholder="Semoga bisa membantu adik-adik yang membutuhkan..."
             class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
@@ -80,7 +54,7 @@
 
         <!-- Tombol Submit -->
         <div class="text-center">
-          <Button link="/" title="Donasi Sekarang" class="w-full" />
+          <button type="submit" class="w-full">Donasi Sekarang</button>
         </div>
       </form>
     </div>
@@ -89,6 +63,7 @@
 
 <script>
 import Button from "./../components/button.vue";
+import axios from "axios";
 export default {
   components: {
     Button,
@@ -96,28 +71,31 @@ export default {
   data() {
     return {
       form: {
-        name: "",
-        email: "",
-        amount: "",
-        message: "",
+        program_donasi_id: this.$route.params.id,
+        nominal: "",
+        ucapan: "",
       },
     };
   },
   methods: {
-    submitForm() {
-      console.log("Donasi:", this.form);
-      alert(
-        "Terima kasih atas donasinya! Semoga kebaikanmu membawa manfaat besar."
-      );
-      this.form = {
-        name: "",
-        email: "",
-        amount: "",
-        message: "",
-      };
-    },
-    goBack() {
-      this.$router.go(-1);
+    async postDaftar() {
+      try {
+        const baseUrl = import.meta.env.VITE_API_BASE_URL;
+        const token = localStorage.getItem("token");
+
+        console.log(this.form)
+        
+        const response = await axios.post(`${baseUrl}/api/donasi/daftar`, this.form,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`
+            }
+          }
+        );
+        this.$router.push("/profile"); 
+      } catch (error) {
+        console.error("Gagal mengambil data program:", error);
+      }
     },
   },
 };

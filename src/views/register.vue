@@ -33,7 +33,6 @@
         </h2>
 
         <!-- Form -->
-         {{ formData }}
         <form action="" method="POST" @submit.prevent="postRegister">
           <!-- Name -->
           <div class="mb-4">

@@ -13,6 +13,7 @@ import List_Relawan from "../sections/Relawan/List_Relawan.vue";
 import Relawan from "../sections/Landing/Relawan.vue";
 import List_Donasi from "../sections/Donasi/List_Donasi.vue";
 import Artikel from "../views/Artikel.vue"
+import detailArtikel from "../views/detailArtikel.vue";
 
 const router = createRouter({
   history: createWebHistory(),
@@ -48,12 +49,12 @@ const router = createRouter({
       component: detailDonasi,
     },
     {
-      path: "/daftar-relawan",
+      path: "/daftar-relawan/:id",
       name: "daftarlRelawan",
       component: daftarRelawan,
     },
     {
-      path: "/daftar-donasi",
+      path: "/daftar-donasi/:id",
       name: "daftarlDonasi",
       component: daftarDonasi,
     },
@@ -81,7 +82,12 @@ const router = createRouter({
       path: "/relawan",
       name: "relawan",
       component: Relawan,
+    },    {
+      path: "/detail-artikel/:id",
+      name: "detailArtikel",
+      component: detailArtikel,
     },
+
   ],
 });
 

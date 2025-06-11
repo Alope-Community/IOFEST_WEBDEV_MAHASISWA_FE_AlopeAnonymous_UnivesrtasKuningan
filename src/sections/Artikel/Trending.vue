@@ -15,39 +15,55 @@
 
       <div class="grid md:grid-cols-4 grid-cols-1 gap-4 mb-10"> 
         <div
-          v-for="(item, index) in trending"
+          v-for="(item, index) in artikels"
           :key="index"
           class="flex-shrink-0"
         >
           <img
-            :src="item.image"
+            :src="item.gambar"
             alt=""
             class="w-full h-[200px] object-cover rounded-md mb-2"
           />
-          <p class="text-sm font-medium">{{ item.title }}</p>
+          <p class="text-sm font-medium">{{ item.judul }}</p>
         </div>
-        <SubscribeCard />
       </div>
       <hr class="border-t-2 border-blue-500 w-6/5 mx-auto my-10" />
     </div>
   </section>
 </template>
 
-<script setup>
-import SubscribeCard from "./SubscribeCard.vue";
+<script>
+import { RouterLink } from "vue-router";
+import axios from "axios";
+export default {
+  components: { RouterLink },
+  data() {
+    return {
+      artikels: [],
+    };
+  },
+  computed: {
+  },
+  methods: {
+    async fetchArtikel() {
+      try {
+        const baseUrl = import.meta.env.VITE_API_BASE_URL;
+        const artikelResponse = await axios.get(`${baseUrl}/api/artikel?limit=3`);
+        
+        this.artikels = artikelResponse.data.data;
+        
 
-const trending = [
-  {
-    title: "Aksi Bersih Sungai: Relawan Hijaukan Lingkungan",
-    image: "/images/page/program.png",
+        this.artikels = artikelResponse.data.data.map(item => ({
+          ...item,
+          gambar: `${baseUrl}/storage/${item.gambar}`
+        }));
+      } catch (error) {
+        console.error("Gagal mengambil data program:", error);
+      }
+    },
   },
-  {
-    title: "Program Donasi Buku untuk Anak Pedalaman",
-    image: "/images/page/program.png",
+  mounted() {
+    this.fetchArtikel();
   },
-  {
-    title: "Pelatihan Digital untuk Guru Daerah Terpencil",
-    image: "/images/page/program.png",
-  },
-];
+};
 </script>

@@ -2,7 +2,6 @@
   <main>
     <navigation v-if="showLayout" :isAuthenticated="isAuthenticated" />
     <router-view />
-    {{ isAuthenticated }}
     <footerUser v-if="showLayout" />
   </main>
 </template>
@@ -26,7 +25,6 @@ export default {
   computed: {
     showLayout() {
       const path = this.$route?.path;
-      // Menyembunyikan navbar dan footer di halaman login dan register
       return path !== "/login" && path !== "/register";
     },
   },
