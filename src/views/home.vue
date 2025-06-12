@@ -26,6 +26,9 @@ export default {
     FaqSection,
     GaleriSection,
   },
+  mounted() {
+    window.scrollTo(0, 0);
+  },
 };
 </script>
 

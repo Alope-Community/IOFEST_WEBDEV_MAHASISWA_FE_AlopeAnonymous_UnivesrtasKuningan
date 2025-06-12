@@ -1,6 +1,12 @@
 <template>
   <DetailSecttion :relawan="relawan" />
-  <RatingSection :testimoni="testimoni" :currentPage="currentPage" :limit="limit" :testimoniLength="testimoniLength" @nextPage="nextPage"/>
+  <RatingSection
+    :testimoni="testimoni"
+    :currentPage="currentPage"
+    :limit="limit"
+    :testimoniLength="testimoniLength"
+    @nextPage="nextPage"
+  />
 </template>
 
 <script>
@@ -13,17 +19,18 @@ export default {
     DetailSecttion,
     RatingSection,
   },
-    data() {
-      return {
-        relawan: {},
-        testimoni: [],
+  data() {
+    return {
+      relawan: {},
+      testimoni: [],
 
-        currentPage: 0,
-        limit: 3,
-        testimoniLength: 0
-      }
+      currentPage: 0,
+      limit: 3,
+      testimoniLength: 0,
+    };
   },
-    mounted() {
+  mounted() {
+    window.scrollTo(0, 0);
     this.fetchRelawan(this.currentPage, this.limit);
   },
   methods: {
@@ -33,21 +40,22 @@ export default {
         const id = this.$route.params.id;
         const response = await axios.get(`${baseUrl}/api/relawan/${id}`);
         this.relawan = response.data.data;
-        this.testimoni = response.data.data.testimoni.data.slice(currentPage, limit);
+        this.testimoni = response.data.data.testimoni.data.slice(
+          currentPage,
+          limit
+        );
         this.testimoniLength = response.data.data.testimoni.data.length;
-        this.relawan.gambar = `${baseUrl}/storage/${response.data.data.gambar}`
+        this.relawan.gambar = `${baseUrl}/storage/${response.data.data.gambar}`;
       } catch (error) {
         console.error("Gagal mengambil data program:", error);
       }
     },
     nextPage(currentPage, limit) {
-
-
-      this.currentPage= currentPage
-      this.limit= limit
+      this.currentPage = currentPage;
+      this.limit = limit;
 
       this.fetchRelawan(this.currentPage, this.limit);
-    }
+    },
   },
 };
 </script>

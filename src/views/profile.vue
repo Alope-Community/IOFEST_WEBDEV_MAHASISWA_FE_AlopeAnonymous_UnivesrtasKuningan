@@ -9,5 +9,8 @@ export default {
   components: {
     ProfileSection,
   },
+  mounted() {
+    window.scrollTo(0, 0);
+  },
 };
 </script>

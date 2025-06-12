@@ -1,7 +1,7 @@
 <template>
   <main>
     <navigation v-if="showLayout" :isAuthenticated="isAuthenticated" />
-    <router-view  />
+    <router-view />
     <footerUser v-if="showLayout" />
   </main>
 </template>
@@ -20,7 +20,7 @@ export default {
   data() {
     return {
       isAuthenticated: false,
-    }
+    };
   },
   computed: {
     showLayout() {
@@ -31,21 +31,20 @@ export default {
   methods: {
     async checkIsAuthenticated() {
       const baseUrl = import.meta.env.VITE_API_BASE_URL;
-      const token =  localStorage.getItem("token");;
+      const token = localStorage.getItem("token");
       const response = await axios.get(`${baseUrl}/api/isAuth?token=${token}`);
 
-      if(response.data) {
-        localStorage.setItem("isAuthenticated", true)
-        this.isAuthenticated = true
-      } else{
-        localStorage.setItem("isAuthenticated", false)
-        this.isAuthenticated = false
+      if (response.data) {
+        localStorage.setItem("isAuthenticated", true);
+        this.isAuthenticated = true;
+      } else {
+        localStorage.setItem("isAuthenticated", false);
+        this.isAuthenticated = false;
       }
-
-    }
+    },
   },
   mounted() {
     this.checkIsAuthenticated();
-  }
+  },
 };
 </script>

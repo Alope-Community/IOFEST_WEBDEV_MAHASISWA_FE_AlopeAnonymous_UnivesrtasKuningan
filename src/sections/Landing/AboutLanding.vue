@@ -6,9 +6,9 @@
       class="container relative md:px-16 lg:px-20 px-5 flex flex-col md:flex-row w-full z-10"
     >
       <!-- Konten Teks -->
-      <div class="flex-1 py-20 relative z-10">
-        <h1 class="text-5xl font-bold">Tentang Kami</h1>
-        <p class="text-justify pt-8">
+      <div class="flex-1 sm:py-20 py-10 relative z-10">
+        <h1 class="md:text-4xl sm:text-3xl text-2xl font-bold">Tentang Kami</h1>
+        <p class="text-justify sm:pt-8 pt-4 text-gray-800">
           Pijar Nusantara adalah platform yang menghubungkan relawan pendidikan
           dan donatur untuk bersama mendukung kesejahteraan Indonesia melalui
           aksi nyata dan kolaborasi berkelanjutan.
@@ -19,7 +19,9 @@
       </div>
 
       <!-- Gambar Logo -->
-      <div class="relative z-0 flex justify-center items-center sm:flex-1 sm:justify-end ">
+      <div
+        class="relative z-0 flex justify-center items-center sm:flex-1 sm:justify-end"
+      >
         <img
           src="/images/logo.png"
           alt="Logo Pijar Nusantara"

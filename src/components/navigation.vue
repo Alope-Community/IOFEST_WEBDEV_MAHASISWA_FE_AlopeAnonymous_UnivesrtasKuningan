@@ -1,50 +1,54 @@
 <template>
   <nav
     :class="[
-      'fixed top-0 w-full z-50 px-6 md:px-16 lg:px-20 p-4 transition duration-300',
+      'fixed top-0 w-full z-50 px-5 md:px-16 lg:px-20 sm:py-4 py-3 transition duration-300',
       isScrolled
         ? 'bg-white bg-opacity-5 backdrop-blur-lg shadow-md'
         : 'bg-opacity-100 shadow-none',
     ]"
   >
     <div class="container mx-auto flex justify-between items-center">
-      <div class="flex items-center space-x-1 text-2xl font-bold text-blue-500">
-        <img src="/images/logo.png" alt="Logo" class="w-12 h-12" />
+      <div
+        class="flex items-center space-x-1 sm:text-2xl text-xl font-bold text-blue-500"
+      >
+        <img src="/images/logo.png" alt="Logo" class="sm:size-12 size-11" />
         <RouterLink to="/">Pijar Nusantara</RouterLink>
-      </div>
+              
+      </div>
 
       <!-- Desktop Menu -->
-      <div v-if="isAuthenticated == 'false' || isAuthenticatedFromNav == 'false'" class="hidden md:flex space-x-4">
-<RouterLink
-            to="/login"
-            class="w-full  bg-blue-500 text-white font-medium py-2 px-4 rounded-lg hover:bg-blue-600 transition duration-300 text-center"
-          >
-            Login
-          </RouterLink>
-          <RouterLink
-            to="/register"
-            class="w-full  bg-blue-500 text-white font-medium py-2 px-4 rounded-lg hover:bg-blue-600 transition duration-300 text-center"
-          >
-            Register
-          </RouterLink>
+      <div
+        v-if="isAuthenticated == 'false' || isAuthenticatedFromNav == 'false'"
+        class="hidden md:flex space-x-4"
+      >
+        <RouterLink
+          to="/login"
+          class="w-full bg-blue-500 text-white font-medium py-2 px-4 rounded-lg hover:bg-blue-600 transition duration-300 text-center"
+        >
+          Login
+        </RouterLink>
+        <RouterLink
+          to="/register"
+          class="w-full bg-blue-500 text-white font-medium py-2 px-4 rounded-lg hover:bg-blue-600 transition duration-300 text-center"
+        >
+          Register
+        </RouterLink>
       </div>
       <div v-else class="hidden md:flex space-x-4">
         <RouterLink
           to="/profile"
-          class="flex items-center gap-2  bg-blue-500 text-white font-medium py-2 px-4 rounded-lg hover:bg-blue-600 transition duration-300"
+          class="flex items-center gap-2 bg-blue-500 text-white font-medium py-2 px-4 rounded-lg hover:bg-blue-600 transition duration-300"
         >
           <i class="fa-solid fa-user"></i>
           <span>Profile</span>
         </RouterLink>
         <div
-          class="flex items-center gap-2  bg-blue-500 text-white font-medium py-2 px-4 rounded-lg hover:bg-blue-600 transition duration-300"
+          class="flex items-center gap-2 bg-blue-500 text-white font-medium py-2 px-4 rounded-lg hover:bg-blue-600 transition duration-300"
         >
           <i class="fa-solid fa-right-from-bracket"></i>
           <button @click="logout">Logout</button>
+        </div>
       </div>
-      </div>
-
-
 
       <!-- Mobile Menu Toggle -->
       <div class="md:hidden">
@@ -53,7 +57,7 @@
           class="text-blue-500 p-2 focus:outline-none transition duration-300"
           aria-label="Toggle Menu"
         >
-          <IconHamburger size="w-10 h-10" />
+          <IconHamburger size="sm:size-10 size-7" />
         </button>
       </div>
     </div>
@@ -69,24 +73,27 @@
     >
       <div
         v-if="menuOpen"
-        class="md:hidden  text-blue-500 p-4 space-y-3 border-t border-gray-300"
+        class="md:hidden text-blue-500 p-4 space-y-3 border-t border-gray-300"
       >
         <!-- Mobile Buttons -->
-        <div v-if="isAuthenticated == 'false' || isAuthenticatedFromNav == 'false'" class="flex flex-col space-y-4">
+        <div
+          v-if="isAuthenticated == 'false' || isAuthenticatedFromNav == 'false'"
+          class="flex flex-col space-y-4"
+        >
           <RouterLink
             to="/login"
-            class="w-full  bg-blue-500 text-white font-medium py-2 px-4 rounded-lg hover:bg-blue-600 transition duration-300 text-center"
+            class="w-full bg-blue-500 text-white font-medium py-2 px-4 rounded-lg hover:bg-blue-600 transition duration-300 text-center"
           >
             Login
           </RouterLink>
           <RouterLink
             to="/register"
-            class="w-full  bg-blue-500 text-white font-medium py-2 px-4 rounded-lg hover:bg-blue-600 transition duration-300 text-center"
+            class="w-full bg-blue-500 text-white font-medium py-2 px-4 rounded-lg hover:bg-blue-600 transition duration-300 text-center"
           >
             Register
           </RouterLink>
         </div>
-      <div v-else class="flex flex-col space-y-4">
+        <div v-else class="flex flex-col space-y-4">
           <RouterLink
             to="/profile"
             class="flex items-center justify-center gap-2 bg-blue-500 text-white font-medium py-2 px-4 rounded-lg hover:bg-blue-600 transition duration-300"
@@ -99,7 +106,7 @@
           >
             <i class="fa-solid fa-right-from-bracket"></i>
             <button @click="logout">Logout</button>
-        </div>
+          </div>
         </div>
       </div>
     </transition>
@@ -121,16 +128,16 @@ export default {
       menuOpen: false,
       isScrolled: false,
 
-      isAuthenticatedFromNav: "false"
+      isAuthenticatedFromNav: "false",
     };
   },
   methods: {
     logout() {
       localStorage.clear();
-      this.$toast.success('Anda Berhasil Logout!', {
-            position: 'top-right'
-        });
-      window.location.replace('/');
+      this.$toast.success("Anda Berhasil Logout!", {
+        position: "top-right",
+      });
+      window.location.replace("/");
     },
     toggleMenu() {
       this.menuOpen = !this.menuOpen;

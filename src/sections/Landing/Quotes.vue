@@ -1,7 +1,9 @@
 <template>
   <section class="container md:px-16 lg:px-20">
-    <div class="bg-blue-400 items-center text-center py-10 rounded-sm">
-      <p class="text-xl text-white md:text-3xl xl:text-4xl italic font-semibold">
+    <div class="bg-blue-400 items-center text-center py-10 rounded-sm px-5">
+      <p
+        class="text-xl text-white md:text-3xl xl:text-4xl italic font-semibold"
+      >
         Pendidikan adalah senjata paling ampuh <br class="sm:block hidden" />
         yang dapat Anda gunakan untuk <br class="sm:block hidden" />
         mengubah

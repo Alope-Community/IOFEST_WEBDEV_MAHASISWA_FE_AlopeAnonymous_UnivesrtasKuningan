@@ -21,10 +21,11 @@
       <!-- Form Section -->
       <div class="w-full md:w-1/2 p-6">
         <!-- Back Button -->
-        <router-link to="/login"
+        <router-link
+          to="/login"
           class="flex items-center mb-2 text-primary font-bold hover:text-blue-500 transition duration-300"
         >
-          <i class="fas fa-arrow-left mr-2 "></i> Kembali
+          <i class="fas fa-arrow-left mr-2"></i> Kembali
         </router-link>
 
         <!-- Title -->
@@ -58,7 +59,9 @@
               Email
             </label>
             <div class="relative mt-2">
-              <i class="fas fa-envelope absolute left-3 top-4 text-blue-500"></i>
+              <i
+                class="fas fa-envelope absolute left-3 top-4 text-blue-500"
+              ></i>
               <input
                 type="email"
                 id="email"
@@ -113,13 +116,20 @@
           </div>
 
           <!-- Submit Button -->
-          <button type="submit" class="w-full h-[36px] rounded-lg bg-blue-500 text-white hover:bg-blue-600  transition duration-300">Register</button>
+          <button
+            type="submit"
+            class="w-full h-[36px] rounded-lg bg-blue-500 text-white hover:bg-blue-600 transition duration-300"
+          >
+            Register
+          </button>
         </form>
 
         <!-- Login Redirect -->
         <p class="mt-4 text-center text-gray-600">
           Sudah Punya Akun?
-          <router-link to="/login" class="text-blue-500 hover:underline">Masuk</router-link>
+          <router-link to="/login" class="text-blue-500 hover:underline"
+            >Masuk</router-link
+          >
         </p>
       </div>
     </div>
@@ -134,34 +144,40 @@ export default {
   components: {
     Button,
   },
-  data(){
-    return{
+  data() {
+    return {
       formData: {
         name: "",
         email: "",
-        password:"",
-        password_confirmation: ""
-      }
-    }
+        password: "",
+        password_confirmation: "",
+      },
+    };
   },
   methods: {
     async postRegister() {
       try {
         const baseUrl = import.meta.env.VITE_API_BASE_URL;
-        const response = await axios.post(`${baseUrl}/api/register`, this.formData);
+        const response = await axios.post(
+          `${baseUrl}/api/register`,
+          this.formData
+        );
 
-        this.$toast.success('Registrasi berhasil!', {
-            position: 'top-right'
+        this.$toast.success("Registrasi berhasil!", {
+          position: "top-right",
         });
         setTimeout(() => {
-          this.$router.push("/login"); 
+          this.$router.push("/login");
         }, 500);
       } catch (error) {
-        this.$toast.error('Registrasi Gagal!', {
-            position: 'top-right'
+        this.$toast.error("Registrasi Gagal!", {
+          position: "top-right",
         });
       }
     },
+  },
+  mounted() {
+    window.scrollTo(0, 0);
   },
 };
 </script>

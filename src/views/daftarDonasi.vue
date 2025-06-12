@@ -104,13 +104,13 @@ export default {
             },
           }
         );
-        this.$toast.success('Anda Berhasil Berdonasi!', {
-            position: 'top-right'
+        this.$toast.success("Anda Berhasil Berdonasi!", {
+          position: "top-right",
         });
         this.$router.push("/profile");
       } catch (error) {
-        this.$toast.error('Anda Gagal Berdonasi!', {
-            position: 'top-right'
+        this.$toast.error("Anda Gagal Berdonasi!", {
+          position: "top-right",
         });
       }
     },
@@ -119,14 +119,15 @@ export default {
       console.log(isauth);
 
       if (isauth == "false") {
-        this.$toast.error('Anda Belum Login!', {
-            position: 'top-right'
+        this.$toast.error("Anda Belum Login!", {
+          position: "top-right",
         });
         this.$router.push("/login");
       }
     },
   },
   mounted() {
+    window.scrollTo(0, 0);
     this.checkIsAuthenticated();
   },
 };

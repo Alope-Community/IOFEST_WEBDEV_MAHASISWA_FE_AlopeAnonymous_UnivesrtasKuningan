@@ -4,7 +4,7 @@
       <!-- Slides -->
       <div class="absolute inset-0 w-full h-full">
         <img
-          v-for="(slide, index) in slides"  
+          v-for="(slide, index) in slides"
           :key="index"
           :src="slide"
           :alt="'Slide ' + (index + 1)"
@@ -21,10 +21,10 @@
       <div
         class="absolute inset-0 flex flex-col items-center justify-center text-center"
       >
-        <h1 class="md:text-5xl text-3xl text-gray-50 font-medium">
+        <h1 class="md:text-5xl sm:text-3xl text-2xl text-gray-50 font-medium">
           Dari Kita, Untuk Nusantara
         </h1>
-        <p class="w-4/5 md:w-1/2 pt-4 text-gray-200">
+        <p class="md:w-1/2 pt-4 px-5 text-gray-300 sm:text-base text-sm">
           Pijar Nusantara hadir sebagai jembatan bagi para relawan dan komunitas
           untuk bersama-sama menerangi masa depan pendidikan Indonesia. Mari
           bergandeng tangan, berbagi peran, dan membawa perubahan nyata dari

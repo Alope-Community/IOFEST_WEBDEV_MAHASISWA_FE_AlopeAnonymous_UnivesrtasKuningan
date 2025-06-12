@@ -3,8 +3,10 @@
     <div class="container mx-auto flex flex-col md:flex-row gap-12 items-start">
       <!-- Left Text -->
       <div class="md:w-1/2">
-        <h2 class="text-4xl font-bold mb-6">Pertanyaan Umum</h2>
-        <p class="text-gray-700 text-lg">
+        <h2 class="md:text-4xl sm:text-3xl text-2xl font-bold sm:mb-6 mb-3">
+          Pertanyaan Umum
+        </h2>
+        <p class="text-gray-700 sm:text-lg">
           Temukan jawaban atas pertanyaan yang sering diajukan mengenai Pijar
           Nusantara, relawan, donasi, dan banyak lagi.
         </p>
@@ -72,7 +74,8 @@ export default {
             "Ya, relawan dan donatur yang berpartisipasi akan mendapatkan sertifikat sebagai bentuk apresiasi.",
         },
         {
-          question: "Apakah saya bisa mengusulkan program relawan di daerah saya?",
+          question:
+            "Apakah saya bisa mengusulkan program relawan di daerah saya?",
           answer:
             "Tentu saja. Kami sangat terbuka terhadap inisiatif dari masyarakat. Anda bisa mengajukan usulan program melalui menu “Login Komunitas” dan tim kami akan meninjau serta berdiskusi lebih lanjut untuk merealisasikannya.",
         },

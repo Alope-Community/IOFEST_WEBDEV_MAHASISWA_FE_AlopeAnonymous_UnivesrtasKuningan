@@ -1,5 +1,5 @@
 <template>
-  <DetailSecttion :donasi = "donasi"/>
+  <DetailSecttion :donasi="donasi" />
 </template>
 
 <script>
@@ -11,12 +11,13 @@ export default {
     DetailSecttion,
   },
   data() {
-      return {
-        donasi: {},
-      }
+    return {
+      donasi: {},
+    };
   },
   mounted() {
     this.fetchDonasi();
+    window.scrollTo(0, 0);
   },
   methods: {
     async fetchDonasi() {
@@ -24,13 +25,13 @@ export default {
         const baseUrl = import.meta.env.VITE_API_BASE_URL;
         const id = this.$route.params.id;
         console.log(id);
-        
+
         const response = await axios.get(`${baseUrl}/api/donasi/${id}`);
         console.log(response);
-        
+
         this.donasi = response.data.data;
-        
-        this.donasi.gambar = `${baseUrl}/storage/${response.data.data.gambar}`
+
+        this.donasi.gambar = `${baseUrl}/storage/${response.data.data.gambar}`;
       } catch (error) {
         console.error("Gagal mengambil data program:", error);
       }

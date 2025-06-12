@@ -14,7 +14,9 @@
     ></span>
 
     <div class="container md:px-16 lg:px-20">
-      <h2 class="md:text-4xl text-3xl text-center font-bold text-gray-900 mb-12">
+      <h2
+        class="md:text-4xl sm:text-3xl text-2xl text-center font-bold text-gray-900 mb-12"
+      >
         Temukan <span class="text-primary">Program</span> Yang
         <br class="sm:block hidden" />
         Tepat Untukmu
@@ -33,8 +35,12 @@
             class="w-full min-h-52 max-h-52 object-cover"
           />
           <div class="lg:p-6 p-4 flex flex-col">
-            <h3 class="text-xl font-semibold mb-4 ">{{ relawan.title }}</h3>
-            <router-link :to="'detail-relawan/'+relawan.id" class="text-center flex justify-center items-center w-full h-[36px] rounded-lg border border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white transition duration-300">Daftar</router-link>
+            <h3 class="text-xl font-semibold mb-4">{{ relawan.title }}</h3>
+            <router-link
+              :to="'detail-relawan/' + relawan.id"
+              class="text-center flex justify-center items-center w-full h-[36px] rounded-lg border border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white transition duration-300"
+              >Daftar</router-link
+            >
           </div>
         </div>
       </div>
@@ -53,26 +59,26 @@ export default {
   },
   data() {
     return {
-      relawans: []
-    }
+      relawans: [],
+    };
   },
-    mounted() {
+  mounted() {
     this.fetchRelawans();
   },
-    methods: {
+  methods: {
     async fetchRelawans() {
       try {
         const baseUrl = import.meta.env.VITE_API_BASE_URL;
         const response = await axios.get(`${baseUrl}/api/relawan?limit=5`);
-        
-        this.relawans = response.data.data.map(item => ({
+
+        this.relawans = response.data.data.map((item) => ({
           ...item,
-          image_url: `${baseUrl}/storage/${item.image_url}`
+          image_url: `${baseUrl}/storage/${item.image_url}`,
         }));
       } catch (error) {
         console.error("Gagal mengambil data program:", error);
       }
-    }
+    },
   },
 };
 </script>

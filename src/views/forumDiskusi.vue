@@ -5,17 +5,15 @@
       <h1 class="text-2xl font-bold mb-6">Forum Diskusi</h1>
 
       <!-- Daftar Diskusi -->
-      <div v-for="forum in forums"
-       class="space-y-6">
+      <div v-for="forum in forums" class="space-y-6" :key="forum.id">
         <!-- Diskusi 1 -->
         <div class="border border-gray-200 rounded-md p-4">
           <div class="flex items-center justify-between mb-4">
             <div>
-              <h2 class="text-xl font-semibold">
-                Diskusi {{ forum.judul }}
-              </h2>
+              <h2 class="text-xl font-semibold">Diskusi {{ forum.judul }}</h2>
               <p class="text-sm text-gray-500">
-                Diposting oleh <span class="font-medium">{{ forum.user.name }}</span> pada 10
+                Diposting oleh
+                <span class="font-medium">{{ forum.user.name }}</span> pada 10
                 Mei 2025
               </p>
             </div>
@@ -43,23 +41,27 @@
           </div>
 
           <!-- Menulis Komentar untuk Diskusi 1 -->
-          <form action="" method="POST" @submit.prevent="postKomentar(forum.id)">
-          <div class="mt-4">
-            <textarea
-              v-model="formData.komentar"
-              class="w-full border border-gray-300 p-3 rounded-md"
-              rows="4"
-              placeholder="Tulis komentar..."
-            ></textarea>
-            <div class="mt-4 flex justify-end">
-              <button
-                type="submit"
-                class="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600"
-              >
-                Kirim Komentar
-              </button>
+          <form
+            action=""
+            method="POST"
+            @submit.prevent="postKomentar(forum.id)"
+          >
+            <div class="mt-4">
+              <textarea
+                v-model="formData.komentar"
+                class="w-full border border-gray-300 p-3 rounded-md"
+                rows="4"
+                placeholder="Tulis komentar..."
+              ></textarea>
+              <div class="mt-4 flex justify-end">
+                <button
+                  type="submit"
+                  class="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600"
+                >
+                  Kirim Komentar
+                </button>
+              </div>
             </div>
-          </div>
           </form>
         </div>
       </div>
@@ -75,8 +77,8 @@ export default {
       showComments: { 1: false, 2: false },
       forums: [],
       formData: {
-        komentar:""
-      }
+        komentar: "",
+      },
     };
   },
   methods: {
@@ -89,7 +91,7 @@ export default {
         const baseUrl = import.meta.env.VITE_API_BASE_URL;
         const Response = await axios.get(`${baseUrl}/api/forum`);
         console.log(Response);
-        
+
         this.forums = Response.data.data;
       } catch (error) {
         console.error("Gagal mengambil data program:", error);
@@ -100,11 +102,13 @@ export default {
       try {
         const baseUrl = import.meta.env.VITE_API_BASE_URL;
         const token = localStorage.getItem("token");
-        const response = await axios.post(`${baseUrl}/api/forum/${idForum}/komentar`, this.formData,
+        const response = await axios.post(
+          `${baseUrl}/api/forum/${idForum}/komentar`,
+          this.formData,
           {
             headers: {
-              Authorization: `Bearer ${token}`
-            }
+              Authorization: `Bearer ${token}`,
+            },
           }
         );
         window.location.reload();
@@ -113,7 +117,8 @@ export default {
       }
     },
   },
-    mounted() {
+  mounted() {
+    window.scrollTo(0, 0);
     this.fetchForum();
   },
 };

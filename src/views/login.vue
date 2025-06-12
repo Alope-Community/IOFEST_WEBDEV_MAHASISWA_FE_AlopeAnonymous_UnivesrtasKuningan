@@ -20,7 +20,8 @@
 
       <!-- Login Form -->
       <div class="w-full md:w-1/2 p-6">
-        <router-link to="/"
+        <router-link
+          to="/"
           class="flex items-center mb-6 text-primary font-bold hover:text-blue-500 transition duration-300"
         >
           <i class="fas fa-arrow-left mr-2"></i> Kembali
@@ -35,7 +36,9 @@
               Email
             </label>
             <div class="relative mt-2">
-              <i class="fas fa-envelope absolute left-3 top-4 text-blue-500"></i>
+              <i
+                class="fas fa-envelope absolute left-3 top-4 text-blue-500"
+              ></i>
               <input
                 type="email"
                 id="email"
@@ -69,13 +72,20 @@
           </div>
 
           <!-- Submit Button -->
-          <button type="submit" class="w-full h-[36px] rounded-lg bg-blue-500 text-white hover:bg-blue-600  transition duration-300">LOGIN</button>
+          <button
+            type="submit"
+            class="w-full h-[36px] rounded-lg bg-blue-500 text-white hover:bg-blue-600 transition duration-300"
+          >
+            LOGIN
+          </button>
         </form>
 
         <!-- Links -->
         <p class="mt-4 text-center text-gray-600">
           Belum Punya Akun?
-          <router-link to="/register" class="text-blue-500 hover:underline">Daftar</router-link>
+          <router-link to="/register" class="text-blue-500 hover:underline"
+            >Daftar</router-link
+          >
         </p>
         <p class="mt-2 text-center text-gray-600">
           Login Sebagai Komunitas
@@ -95,40 +105,46 @@ export default {
   components: {
     Button,
   },
-  data(){
-    return{
+  data() {
+    return {
       formData: {
         email: "",
-        password:""
-      }
-    }
+        password: "",
+      },
+    };
   },
   methods: {
     async postLogin() {
       try {
         const baseUrl = import.meta.env.VITE_API_BASE_URL;
-        const response = await axios.post(`${baseUrl}/api/login`, this.formData);
+        const response = await axios.post(
+          `${baseUrl}/api/login`,
+          this.formData
+        );
 
         const token = response.data.token;
         localStorage.setItem("token", token);
 
         axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-        
-        localStorage.setItem("isAuthenticated", true)
 
-        this.$toast.success('Login berhasil!', {
-            position: 'top-right'
+        localStorage.setItem("isAuthenticated", true);
+
+        this.$toast.success("Login berhasil!", {
+          position: "top-right",
         });
 
         setTimeout(() => {
-          this.$router.push("/"); 
+          this.$router.push("/");
         }, 500);
       } catch (error) {
-        this.$toast.error('Login Gagal!', {
-            position: 'top-right'
+        this.$toast.error("Login Gagal!", {
+          position: "top-right",
         });
       }
     },
+  },
+  mounted() {
+    window.scrollTo(0, 0);
   },
 };
 </script>

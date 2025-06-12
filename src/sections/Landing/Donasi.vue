@@ -15,7 +15,7 @@
 
     <div class="container md:px-16 lg:px-20">
       <h2
-        class="md:text-4xl text-3xl text-center font-bold text-gray-900 mb-12"
+        class="md:text-4xl sm:text-3xl text-2xl text-center font-bold text-gray-900 mb-12"
       >
         Temukan <span class="text-primary">Donasi</span> Untuk
         <br class="sm:block hidden" />
@@ -24,20 +24,29 @@
 
       <!-- Scrollable Horizontal Wrapper -->
       <div class="flex gap-5 overflow-x-auto pb-2">
-        <div
-          v-for="(donasi, index) in donasis"
-          :key="index"
-          class="min-w-[300px] border border-primary rounded overflow-hidden shadow flex flex-col bg-white"
-        >
-          <img
-            :src="donasi.image_url"
-            :alt="donasi.title"
-            class="w-full min-h-52 max-h-52 object-cover"
-          />
-          <div class="lg:p-6 p-4 flex flex-col">
-            <h3 class="text-xl font-semibold mb-4">{{ donasi.title }}</h3>
-            <router-link :to="'detail-donasi/'+donasi.id" class="text-center flex justify-center items-center w-full h-[36px] rounded-lg border border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white transition duration-300">Daftar</router-link>
+        <div v-if="!isLoading">
+          <div
+            v-for="(donasi, index) in donasis"
+            :key="index"
+            class="min-w-[300px] border border-primary rounded overflow-hidden shadow flex flex-col bg-white"
+          >
+            <img
+              :src="donasi.image_url"
+              :alt="donasi.title"
+              class="w-full min-h-52 max-h-52 object-cover"
+            />
+            <div class="lg:p-6 p-4 flex flex-col">
+              <h3 class="text-xl font-semibold mb-4">{{ donasi.title }}</h3>
+              <router-link
+                :to="'detail-donasi/' + donasi.id"
+                class="text-center flex justify-center items-center w-full h-[36px] rounded-lg border border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white transition duration-300"
+                >Daftar</router-link
+              >
+            </div>
           </div>
+        </div>
+        <div v-else>
+          <p>Memuat...</p>
         </div>
       </div>
     </div>
@@ -55,28 +64,29 @@ export default {
   },
   data() {
     return {
-      donasis: []
-    }
+      donasis: [],
+      isLoading: true,
+    };
   },
-    mounted() {
+  mounted() {
     this.fetchDonasis();
   },
-    methods: {
+  methods: {
     async fetchDonasis() {
       try {
         const baseUrl = import.meta.env.VITE_API_BASE_URL;
         const response = await axios.get(`${baseUrl}/api/donasi?limit=5`);
-        
-        this.donasis = response.data.data.map(item => ({
-          ...item,
-          image_url: `${baseUrl}/storage/${item.image_url}`
-        }));
 
-        console.log(this.relawans);
+        this.donasis = response.data.data.map((item) => ({
+          ...item,
+          image_url: `${baseUrl}/storage/${item.image_url}`,
+        }));
       } catch (error) {
         console.error("Gagal mengambil data program:", error);
+      } finally {
+        this.isLoading = false;
       }
-    }
+    },
   },
-  };
+};
 </script>
