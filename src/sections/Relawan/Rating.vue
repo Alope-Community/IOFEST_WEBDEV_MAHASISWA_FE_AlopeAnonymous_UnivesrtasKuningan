@@ -19,11 +19,6 @@
           :key="index"
           class="border border-gray-300 rounded-lg p-5 shadow-md flex items-start gap-4 bg-white"
         >
-          <img
-            :src="item.image"
-            alt="Foto Relawan"
-            class="w-16 h-16 rounded-full object-cover"
-          />
           <div>
             <h3 class="font-semibold text-lg text-gray-800">{{ item.user_name }}</h3>
             <p class="text-gray-600 text-sm mb-2">"{{ item.pesan }}"</p>

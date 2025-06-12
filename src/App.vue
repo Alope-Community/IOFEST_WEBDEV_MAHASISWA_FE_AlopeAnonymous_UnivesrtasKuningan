@@ -1,7 +1,7 @@
 <template>
   <main>
     <navigation v-if="showLayout" :isAuthenticated="isAuthenticated" />
-    <router-view />
+    <router-view  />
     <footerUser v-if="showLayout" />
   </main>
 </template>

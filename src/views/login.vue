@@ -20,11 +20,11 @@
 
       <!-- Login Form -->
       <div class="w-full md:w-1/2 p-6">
-        <button
+        <router-link to="/"
           class="flex items-center mb-6 text-primary font-bold hover:text-blue-500 transition duration-300"
         >
           <i class="fas fa-arrow-left mr-2"></i> Kembali
-        </button>
+        </router-link>
 
         <h2 class="text-2xl font-bold text-gray-800 text-center mb-6">Login</h2>
 
@@ -35,7 +35,7 @@
               Email
             </label>
             <div class="relative mt-2">
-              <i class="fas fa-envelope absolute left-3 top-4 text-primary"></i>
+              <i class="fas fa-envelope absolute left-3 top-4 text-blue-500"></i>
               <input
                 type="email"
                 id="email"
@@ -56,7 +56,7 @@
               Password
             </label>
             <div class="relative mt-2">
-              <i class="fas fa-lock absolute left-3 top-4 text-primary"></i>
+              <i class="fas fa-lock absolute left-3 top-4 text-blue-500"></i>
               <input
                 type="password"
                 id="password"
@@ -69,13 +69,13 @@
           </div>
 
           <!-- Submit Button -->
-          <button type="submit" class="w-full">LOGIN</button>
+          <button type="submit" class="w-full h-[36px] rounded-lg bg-blue-500 text-white hover:bg-blue-600  transition duration-300">LOGIN</button>
         </form>
 
         <!-- Links -->
         <p class="mt-4 text-center text-gray-600">
           Belum Punya Akun?
-          <a href="/register" class="text-blue-500 hover:underline">Daftar</a>
+          <router-link to="/register" class="text-blue-500 hover:underline">Daftar</router-link>
         </p>
         <p class="mt-2 text-center text-gray-600">
           Login Sebagai Komunitas
@@ -116,11 +116,17 @@ export default {
         
         localStorage.setItem("isAuthenticated", true)
 
+        this.$toast.success('Login berhasil!', {
+            position: 'top-right'
+        });
+
         setTimeout(() => {
           this.$router.push("/"); 
         }, 500);
       } catch (error) {
-        console.error("Gagal mengambil data program:", error);
+        this.$toast.error('Login Gagal!', {
+            position: 'top-right'
+        });
       }
     },
   },

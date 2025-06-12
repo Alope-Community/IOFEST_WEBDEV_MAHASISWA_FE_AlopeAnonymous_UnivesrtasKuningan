@@ -52,7 +52,7 @@
       <div class="container mx-auto px-4 mb-5 lg:px-20">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
           <!-- Program Cards Section -->
-          <div class="md:col-span-3 grid grid-cols-1 mb-5">
+          <div class="md:col-span-3 grid-cols-1 mb-5">
             <div
               class="bg-white border border-primary gap-10 shadow-md rounded-[15px] md:flex overflow-hidden items-center mb-5"
               v-for="(donasi, index) in donasis"
@@ -161,6 +161,11 @@ export default {
       const baseUrl = import.meta.env.VITE_API_BASE_URL;
       const searchResponse = await axios.get(`${baseUrl}/api/donasi?search=${search.target.value}`);
         this.donasis = searchResponse.data.data;
+
+        this.donasis = searchResponse.data.data.map(item => ({
+          ...item,
+          image_url: `${baseUrl}/storage/${item.image_url }`
+        }));
     },
     async fetchDonasi() {
       try {
@@ -183,7 +188,7 @@ export default {
         }));
         this.donasis = donasiResponse.data.data.map(item => ({
           ...item,
-          image_url: `${baseUrl}/storage/${item.gambar}`
+          image_url: `${baseUrl}/storage/${item.image_url }`
         }));
       } catch (error) {
         console.error("Gagal mengambil data program:", error);

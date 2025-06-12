@@ -76,7 +76,7 @@
         <!-- Register Button -->
         <div class="flex justify-center mb-5">
             <router-link
-              :to="`/daftar-relawan/${donasi.id}`"
+              :to="`/daftar-donasi/${donasi.id}`"
               class="border border-blue-500 text-blue-500 px-6 py-3 mt-4 rounded-md font-bold hover:bg-blue-500 hover:text-white transition duration-300 text-center"
             >
               Donasi Sekarang

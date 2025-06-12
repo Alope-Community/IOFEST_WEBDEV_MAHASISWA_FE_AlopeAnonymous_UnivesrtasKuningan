@@ -31,26 +31,24 @@
 
     <!-- Konten Kanan (Sidebar Sticky) -->
     <div class="hidden xl:block sticky top-32 self-start">
-      <!-- <div class="xl:h-[250px] h-[230px] relative after:content-[''] after:bg-black/20 after:absolute after:inset-0 after:rounded">
+      <div class="xl:h-[250px] h-[230px] relative after:content-[''] after:bg-black/20 after:absolute after:inset-0 after:rounded">
         <img
           src="https://assets.promediateknologi.id/crop/0x182:2048x1509/750x500/webp/photo/2023/01/10/24757301.jpg"
           class="w-full xl:h-[250px] h-[230px] rounded-xl object-cover"
         />
-      </div> -->
+      </div>
 
       <div>
-        <!-- <div
-          v-for="item in suggestedArticles"
-          :key="item.slug"
+        <div
           class="xl:my-5 my-3"
         >
-          <p class="text-blue-500 font-semibold">{{ item.category }}</p>
-          <router-link :to="/article/${item.slug}">
+          <p class="text-blue-500 font-semibold">Donasi</p>
+          <router-link :to="'/detail-artikel/3'">
             <h5 class="font-semibold xl:text-xl text-base text-gray-900">
-              {{ item.title }}
+              Satu Donasi, Sejuta Harapan
             </h5>
           </router-link>
-        </div> -->
+        </div>
       </div>
     </div>
   </section>
@@ -76,6 +74,7 @@ export default {
         
         this.artikel = artikelResponse.data.data;
         console.log(this.artikel);
+        this.artikel.gambar = `${baseUrl}/storage/${artikelResponse.data.data.gambar}`
 
         
       } catch (error) {
