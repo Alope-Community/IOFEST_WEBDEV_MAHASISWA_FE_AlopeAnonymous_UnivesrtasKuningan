@@ -1,5 +1,7 @@
-  <template>
-  <section class="container mx-auto pt-32 xl:px-20 md:px-5 px-3 grid xl:grid-cols-4 gap-10">
+<template>
+  <section
+    class="container mx-auto pt-32 xl:px-20 md:px-5 px-3 grid xl:grid-cols-4 gap-10"
+  >
     <!-- Konten Kiri (Artikel) -->
     <div class="xl:col-span-3">
       <h3 class="text-3xl font-bold mb-3">
@@ -31,7 +33,9 @@
 
     <!-- Konten Kanan (Sidebar Sticky) -->
     <div class="hidden xl:block sticky top-32 self-start">
-      <div class="xl:h-[250px] h-[230px] relative after:content-[''] after:bg-black/20 after:absolute after:inset-0 after:rounded">
+      <div
+        class="xl:h-[250px] h-[230px] relative after:content-[''] after:bg-black/20 after:absolute after:inset-0 after:rounded"
+      >
         <img
           src="https://assets.promediateknologi.id/crop/0x182:2048x1509/750x500/webp/photo/2023/01/10/24757301.jpg"
           class="w-full xl:h-[250px] h-[230px] rounded-xl object-cover"
@@ -39,9 +43,7 @@
       </div>
 
       <div>
-        <div
-          class="xl:my-5 my-3"
-        >
+        <div class="xl:my-5 my-3">
           <p class="text-blue-500 font-semibold">Donasi</p>
           <router-link :to="'/detail-artikel/3'">
             <h5 class="font-semibold xl:text-xl text-base text-gray-900">
@@ -62,8 +64,7 @@ export default {
       artikel: [],
     };
   },
-  computed: {
-  },
+  computed: {},
   methods: {
     async fetchArtikel() {
       try {
@@ -71,12 +72,10 @@ export default {
         const id = this.$route.params.id;
         const artikelResponse = await axios.get(`${baseUrl}/api/artikel/${id}`);
         console.log(artikelResponse);
-        
+
         this.artikel = artikelResponse.data.data;
         console.log(this.artikel);
-        this.artikel.gambar = `${baseUrl}/storage/${artikelResponse.data.data.gambar}`
-
-        
+        this.artikel.gambar = `${baseUrl}/storage/${artikelResponse.data.data.gambar}`;
       } catch (error) {
         console.error("Gagal mengambil data program:", error);
       }

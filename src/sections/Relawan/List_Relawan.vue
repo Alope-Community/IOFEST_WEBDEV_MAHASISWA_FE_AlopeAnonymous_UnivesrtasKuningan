@@ -10,7 +10,8 @@
           rgba(59, 130, 246, 0.1) 50%,
           rgba(59, 130, 246, 0) 100%
         );
-      "></span>
+      "
+    ></span>
 
     <div class="relative h-[350px] rounded-md overflow-hidden">
       <img
@@ -153,24 +154,27 @@ export default {
       donasis: [],
     };
   },
-  computed: {
-  },
+  computed: {},
   methods: {
     async searchRelawan(search) {
       const baseUrl = import.meta.env.VITE_API_BASE_URL;
-      const searchResponse = await axios.get(`${baseUrl}/api/relawan?search=${search.target.value}`);
-        this.relawans = searchResponse.data.data;
+      const searchResponse = await axios.get(
+        `${baseUrl}/api/relawan?search=${search.target.value}`
+      );
+      this.relawans = searchResponse.data.data;
 
-        this.relawans = searchResponse.data.data.map(item => ({
-          ...item,
-          image_url: `${baseUrl}/storage/${item.image_url}`
-        }));
+      this.relawans = searchResponse.data.data.map((item) => ({
+        ...item,
+        image_url: `${baseUrl}/storage/${item.image_url}`,
+      }));
     },
     async fetchRelawan() {
       try {
         const baseUrl = import.meta.env.VITE_API_BASE_URL;
         const relawanResponse = await axios.get(`${baseUrl}/api/relawan`);
-        const artikelResponse = await axios.get(`${baseUrl}/api/artikel?limit=3`);
+        const artikelResponse = await axios.get(
+          `${baseUrl}/api/artikel?limit=3`
+        );
         const donasiResponse = await axios.get(`${baseUrl}/api/donasi?limit=2`);
 
         console.log(donasiResponse);
@@ -179,21 +183,18 @@ export default {
         this.artikels = artikelResponse.data.data;
         this.donasis = donasiResponse.data.data;
 
-        this.relawans = relawanResponse.data.data.map(item => ({
+        this.relawans = relawanResponse.data.data.map((item) => ({
           ...item,
-          image_url: `${baseUrl}/storage/${item.image_url}`
+          image_url: `${baseUrl}/storage/public/${item.image_url}`,
         }));
-        this.artikels = artikelResponse.data.data.map(item => ({
+        this.artikels = artikelResponse.data.data.map((item) => ({
           ...item,
-          gambar: `${baseUrl}/storage/${item.gambar}`
+          gambar: `${baseUrl}/storage/public/${item.gambar}`,
         }));
-        this.donasis = donasiResponse.data.data.map(item => ({
+        this.donasis = donasiResponse.data.data.map((item) => ({
           ...item,
-          image_url: `${baseUrl}/storage/${item.image_url}`
+          image_url: `${baseUrl}/storage/public/${item.image_url}`,
         }));
-
-
-        
       } catch (error) {
         console.error("Gagal mengambil data program:", error);
       }
