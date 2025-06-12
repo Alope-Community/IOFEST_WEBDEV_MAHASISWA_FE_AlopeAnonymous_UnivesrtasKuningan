@@ -160,6 +160,11 @@ export default {
       const baseUrl = import.meta.env.VITE_API_BASE_URL;
       const searchResponse = await axios.get(`${baseUrl}/api/relawan?search=${search.target.value}`);
         this.relawans = searchResponse.data.data;
+
+        this.relawans = searchResponse.data.data.map(item => ({
+          ...item,
+          image_url: `${baseUrl}/storage/${item.image_url}`
+        }));
     },
     async fetchRelawan() {
       try {
@@ -167,6 +172,8 @@ export default {
         const relawanResponse = await axios.get(`${baseUrl}/api/relawan`);
         const artikelResponse = await axios.get(`${baseUrl}/api/artikel?limit=3`);
         const donasiResponse = await axios.get(`${baseUrl}/api/donasi?limit=2`);
+
+        console.log(donasiResponse);
 
         this.relawans = relawanResponse.data.data;
         this.artikels = artikelResponse.data.data;
@@ -182,7 +189,7 @@ export default {
         }));
         this.donasis = donasiResponse.data.data.map(item => ({
           ...item,
-          image_url: `${baseUrl}/storage/${item.gambar}`
+          image_url: `${baseUrl}/storage/${item.image_url}`
         }));
 
 

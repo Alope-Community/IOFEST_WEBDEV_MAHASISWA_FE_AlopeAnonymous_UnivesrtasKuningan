@@ -100,12 +100,15 @@
                     <td>{{ relawan.tanggal_bergabung }}</td>
                     <td>{{ relawan.tanggal_mulai }}</td>
                     <td>{{ relawan.tanggal_selesai }}</td>
-                    <td>
-                      <a :href="baseUrl + relawan.sertifikat_url" target="_blank" class="text-blue-500 hover:text-blue-700 font-medium">
-                        <i class="fas fa-certificate mr-1"></i>
-                        Lihat Sertifikat
-                      </a>
-                    </td>
+                    <td v-if="relawan.sertifikat_url">
+                        <a :href="baseUrl + relawan.sertifikat_url" target="_blank" class="text-blue-500 hover:text-blue-700 font-medium">
+                          <i class="fas fa-certificate mr-1"></i>
+                          Lihat Sertifikat
+                        </a>
+                      </td>
+                      <td v-else>
+                        -
+                      </td>
                   </tr>
                 </tbody>
               </table>

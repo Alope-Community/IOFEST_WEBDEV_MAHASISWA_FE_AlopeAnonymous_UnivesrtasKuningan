@@ -1,14 +1,15 @@
 <template>
   <section class="mt-20 px-5 sm:px-10 lg:px-24 font-primary">
     <!-- Tombol Kembali -->
-    <a href="/list_relawan"
+    <router-link
+      to="/list_relawan"
       class="flex items-center mb-6 text-primary font-bold hover:text-blue-500 transition duration-300"
     >
       <i class="fas fa-arrow-left mr-2"></i> Kembali
-  </a>
+    </router-link>
     <!-- Container Grid -->
     <div
-      class="grid lg:grid-cols-2 gap-0 bg-white border border-blue-500  shadow-md rounded-lg overflow-hidden"
+      class="grid lg:grid-cols-2 gap-0 bg-white border border-blue-500 shadow-md rounded-lg overflow-hidden"
     >
       <!-- Gambar Kiri Full Height -->
       <div class="hidden lg:block h-full">
@@ -20,7 +21,12 @@
       </div>
 
       <!-- Formulir Kanan -->
-      <form action="" method="POST" @submit.prevent="postDaftar" class="space-y-6 w-full p-8">
+      <form
+        action=""
+        method="POST"
+        @submit.prevent="postDaftar"
+        class="space-y-6 w-full p-8"
+      >
         <h2 class="text-3xl font-bold mb-2 text-gray-800">
           Formulir Pendaftaran Relawan
         </h2>
@@ -53,7 +59,12 @@
 
         <!-- Tombol Submit -->
         <div class="text-center">
-          <button type="submit" class="w-full">Daftar Sekarang</button>
+          <button
+            type="submit"
+            class="w-full h-[36px] rounded-lg bg-blue-500 text-white hover:bg-blue-600 transition duration-300"
+          >
+            Daftar Sekarang
+          </button>
         </div>
       </form>
     </div>
@@ -70,7 +81,7 @@ export default {
   data() {
     return {
       form: {
-        program_donasi_id: this.$route.params.id,
+        program_relawan_id: this.$route.params.id,
         no_hp: "",
         motivasi: "",
       },
@@ -82,20 +93,42 @@ export default {
         const baseUrl = import.meta.env.VITE_API_BASE_URL;
         const token = localStorage.getItem("token");
         console.log(this.form);
-        
-        const response = await axios.post(`${baseUrl}/api/relawan/daftar`, this.form,
+
+        const response = await axios.post(
+          `${baseUrl}/api/relawan/daftar`,
+          this.form,
           {
             headers: {
-              Authorization: `Bearer ${token}`
-            }
+              Authorization: `Bearer ${token}`,
+            },
           }
         );
-        this.$router.push("/profile"); 
+        this.$toast.success('Anda Berhasil Daftar!', {
+            position: 'top-right'
+        });
+        this.$router.push("/profile");
       } catch (error) {
-        alert("Anda sudah terdaftar di program ini");
+        this.$toast.error('Anda Gagal Daftar!', {
+            position: 'top-right'
+        });
         console.error("Gagal mengambil data program:", error);
       }
     },
+
+    checkIsAuthenticated() {
+      const isauth = localStorage.getItem("isAuthenticated");
+      console.log(isauth);
+
+      if (isauth == "false") {
+        this.$toast.error('Anda Belum Login!', {
+            position: 'top-right'
+        });
+        this.$router.push("/login");
+      }
+    },
+  },
+  mounted() {
+    this.checkIsAuthenticated();
   },
 };
 </script>

@@ -22,7 +22,12 @@
       </div>
 
       <!-- Formulir Donasi -->
-      <form action="" method="POST" @submit.prevent="postDaftar" class="space-y-6 w-full p-8">
+      <form
+        action=""
+        method="POST"
+        @submit.prevent="postDaftar"
+        class="space-y-6 w-full p-8"
+      >
         <h2 class="text-3xl font-bold mb-2 text-gray-800">Formulir Donasi</h2>
 
         <!-- Nominal Donasi -->
@@ -54,7 +59,12 @@
 
         <!-- Tombol Submit -->
         <div class="text-center">
-          <button type="submit" class="w-full">Donasi Sekarang</button>
+          <button
+            type="submit"
+            class="w-full h-[36px] rounded-lg bg-blue-500 text-white hover:bg-blue-600 transition duration-300"
+          >
+            Donasi Sekarang
+          </button>
         </div>
       </form>
     </div>
@@ -83,20 +93,41 @@ export default {
         const baseUrl = import.meta.env.VITE_API_BASE_URL;
         const token = localStorage.getItem("token");
 
-        console.log(this.form)
-        
-        const response = await axios.post(`${baseUrl}/api/donasi/daftar`, this.form,
+        console.log(this.form);
+
+        const response = await axios.post(
+          `${baseUrl}/api/donasi/daftar`,
+          this.form,
           {
             headers: {
-              Authorization: `Bearer ${token}`
-            }
+              Authorization: `Bearer ${token}`,
+            },
           }
         );
-        this.$router.push("/profile"); 
+        this.$toast.success('Anda Berhasil Berdonasi!', {
+            position: 'top-right'
+        });
+        this.$router.push("/profile");
       } catch (error) {
-        console.error("Gagal mengambil data program:", error);
+        this.$toast.error('Anda Gagal Berdonasi!', {
+            position: 'top-right'
+        });
       }
     },
+    checkIsAuthenticated() {
+      const isauth = localStorage.getItem("isAuthenticated");
+      console.log(isauth);
+
+      if (isauth == "false") {
+        this.$toast.error('Anda Belum Login!', {
+            position: 'top-right'
+        });
+        this.$router.push("/login");
+      }
+    },
+  },
+  mounted() {
+    this.checkIsAuthenticated();
   },
 };
 </script>

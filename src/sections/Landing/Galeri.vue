@@ -68,10 +68,10 @@
       data-aos="zoom-in"
       data-aos-delay="800"
     >
-      <h2 class="font-semibold text-xl text-center dark:text-gray-200">
+      <h2 class="font-semibold text-xl text-center ">
         PONDASI NEGERI ADALAH PENDIDIKAN
       </h2>
-      <p class="text-sm mt-3 text-gray-700 dark:text-gray-300 text-justify">
+      <p class="text-sm mt-3 text-gray-700  text-justify">
         Bangsa yang maju lahir dari pendidikan yang kuat dan merata untuk semua
         generasi.
       </p>

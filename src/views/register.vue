@@ -21,11 +21,11 @@
       <!-- Form Section -->
       <div class="w-full md:w-1/2 p-6">
         <!-- Back Button -->
-        <button
+        <router-link to="/login"
           class="flex items-center mb-2 text-primary font-bold hover:text-blue-500 transition duration-300"
         >
-          <i class="fas fa-arrow-left mr-2"></i> Kembali
-        </button>
+          <i class="fas fa-arrow-left mr-2 "></i> Kembali
+        </router-link>
 
         <!-- Title -->
         <h2 class="text-2xl font-bold text-gray-800 text-center mb-3">
@@ -40,7 +40,7 @@
               Nama Lengkap
             </label>
             <div class="relative mt-2">
-              <i class="fas fa-user absolute left-3 top-4 text-primary"></i>
+              <i class="fas fa-user absolute left-3 top-4 text-blue-500"></i>
               <input
                 type="text"
                 id="name"
@@ -58,7 +58,7 @@
               Email
             </label>
             <div class="relative mt-2">
-              <i class="fas fa-envelope absolute left-3 top-4 text-primary"></i>
+              <i class="fas fa-envelope absolute left-3 top-4 text-blue-500"></i>
               <input
                 type="email"
                 id="email"
@@ -79,7 +79,7 @@
               Password
             </label>
             <div class="relative mt-2">
-              <i class="fas fa-lock absolute left-3 top-4 text-primary"></i>
+              <i class="fas fa-lock absolute left-3 top-4 text-blue-500"></i>
               <input
                 type="password"
                 id="password"
@@ -100,7 +100,7 @@
               Konfirmasi Password
             </label>
             <div class="relative mt-2">
-              <i class="fas fa-lock absolute left-3 top-4 text-primary"></i>
+              <i class="fas fa-lock absolute left-3 top-4 text-blue-500"></i>
               <input
                 type="password"
                 id="confirmPassword"
@@ -113,13 +113,13 @@
           </div>
 
           <!-- Submit Button -->
-          <button type="submit" class="w-full">Register</button>
+          <button type="submit" class="w-full h-[36px] rounded-lg bg-blue-500 text-white hover:bg-blue-600  transition duration-300">Register</button>
         </form>
 
         <!-- Login Redirect -->
         <p class="mt-4 text-center text-gray-600">
           Sudah Punya Akun?
-          <a href="/login" class="text-blue-500 hover:underline">Masuk</a>
+          <router-link to="/login" class="text-blue-500 hover:underline">Masuk</router-link>
         </p>
       </div>
     </div>
@@ -150,11 +150,16 @@ export default {
         const baseUrl = import.meta.env.VITE_API_BASE_URL;
         const response = await axios.post(`${baseUrl}/api/register`, this.formData);
 
-        axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-
-        // this.$router.push("/");
+        this.$toast.success('Registrasi berhasil!', {
+            position: 'top-right'
+        });
+        setTimeout(() => {
+          this.$router.push("/login"); 
+        }, 500);
       } catch (error) {
-        console.error("Gagal mengambil data program:", error);
+        this.$toast.error('Registrasi Gagal!', {
+            position: 'top-right'
+        });
       }
     },
   },

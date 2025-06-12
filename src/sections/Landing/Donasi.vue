@@ -36,7 +36,7 @@
           />
           <div class="lg:p-6 p-4 flex flex-col">
             <h3 class="text-xl font-semibold mb-4">{{ donasi.title }}</h3>
-            <a :href="'detail-donasi/'+donasi.id">Daftar</a>
+            <router-link :to="'detail-donasi/'+donasi.id" class="text-center flex justify-center items-center w-full h-[36px] rounded-lg border border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white transition duration-300">Daftar</router-link>
           </div>
         </div>
       </div>
