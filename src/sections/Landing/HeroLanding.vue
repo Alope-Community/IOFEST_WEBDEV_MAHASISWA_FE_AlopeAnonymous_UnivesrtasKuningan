@@ -4,7 +4,7 @@
       <!-- Slides -->
       <div class="absolute inset-0 w-full h-full">
         <img
-          v-for="(slide, index) in slides"
+          v-for="(slide, index) in slides"  
           :key="index"
           :src="slide"
           :alt="'Slide ' + (index + 1)"

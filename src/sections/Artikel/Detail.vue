@@ -1,4 +1,4 @@
-<template>
+  <template>
   <section class="container mx-auto pt-32 xl:px-20 md:px-5 px-3 grid xl:grid-cols-4 gap-10">
     <!-- Konten Kiri (Artikel) -->
     <div class="xl:col-span-3">
