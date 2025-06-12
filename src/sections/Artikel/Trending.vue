@@ -10,10 +10,9 @@
           </svg>
           TRENDING
         </h3>
-      
       </div>
 
-      <div class="grid md:grid-cols-4 grid-cols-1 gap-4 mb-10"> 
+      <div class="grid md:grid-cols-4 grid-cols-1 gap-4 mb-10">
         <div
           v-for="(item, index) in artikels"
           :key="index"
@@ -42,20 +41,20 @@ export default {
       artikels: [],
     };
   },
-  computed: {
-  },
+  computed: {},
   methods: {
     async fetchArtikel() {
       try {
         const baseUrl = import.meta.env.VITE_API_BASE_URL;
-        const artikelResponse = await axios.get(`${baseUrl}/api/artikel?limit=3`);
-        
-        this.artikels = artikelResponse.data.data;
-        
+        const artikelResponse = await axios.get(
+          `${baseUrl}/api/artikel?limit=3`
+        );
 
-        this.artikels = artikelResponse.data.data.map(item => ({
+        this.artikels = artikelResponse.data.data;
+
+        this.artikels = artikelResponse.data.data.map((item) => ({
           ...item,
-          gambar: `${baseUrl}/storage/${item.gambar}`
+          gambar: `${baseUrl}/storage/public/${item.gambar}`,
         }));
       } catch (error) {
         console.error("Gagal mengambil data program:", error);

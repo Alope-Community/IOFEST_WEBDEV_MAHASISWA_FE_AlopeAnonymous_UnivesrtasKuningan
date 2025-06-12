@@ -62,20 +62,18 @@ export default {
       artikels: [],
     };
   },
-  computed: {
-  },
+  computed: {},
   methods: {
     async fetchArtikel() {
       try {
         const baseUrl = import.meta.env.VITE_API_BASE_URL;
         const artikelResponse = await axios.get(`${baseUrl}/api/artikel`);
-        
-        this.artikels = artikelResponse.data.data;
-        
 
-        this.artikels = artikelResponse.data.data.map(item => ({
+        this.artikels = artikelResponse.data.data;
+
+        this.artikels = artikelResponse.data.data.map((item) => ({
           ...item,
-          gambar: `${baseUrl}/storage/${item.gambar}`
+          gambar: `${baseUrl}/storage/public/${item.gambar}`,
         }));
       } catch (error) {
         console.error("Gagal mengambil data program:", error);

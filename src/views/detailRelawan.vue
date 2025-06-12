@@ -45,7 +45,7 @@ export default {
           limit
         );
         this.testimoniLength = response.data.data.testimoni.data.length;
-        this.relawan.gambar = `${baseUrl}/storage/${response.data.data.gambar}`;
+        this.relawan.gambar = `${baseUrl}/storage/public/${response.data.data.gambar}`;
       } catch (error) {
         console.error("Gagal mengambil data program:", error);
       }

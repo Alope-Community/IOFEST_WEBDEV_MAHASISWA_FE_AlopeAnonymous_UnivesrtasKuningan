@@ -165,7 +165,7 @@ export default {
 
       this.relawans = searchResponse.data.data.map((item) => ({
         ...item,
-        image_url: `${baseUrl}/storage/${item.image_url}`,
+        image_url: `${baseUrl}/storage/public/${item.image_url}`,
       }));
     },
     async fetchRelawan() {

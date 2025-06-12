@@ -75,7 +75,7 @@ export default {
 
         this.artikel = artikelResponse.data.data;
         console.log(this.artikel);
-        this.artikel.gambar = `${baseUrl}/storage/${artikelResponse.data.data.gambar}`;
+        this.artikel.gambar = `${baseUrl}/storage/public/${artikelResponse.data.data.gambar}`;
       } catch (error) {
         console.error("Gagal mengambil data program:", error);
       }

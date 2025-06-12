@@ -31,7 +31,7 @@ export default {
 
         this.donasi = response.data.data;
 
-        this.donasi.gambar = `${baseUrl}/storage/${response.data.data.gambar}`;
+        this.donasi.gambar = `${baseUrl}/storage/public/${response.data.data.gambar}`;
       } catch (error) {
         console.error("Gagal mengambil data program:", error);
       }

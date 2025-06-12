@@ -73,7 +73,7 @@ export default {
 
         this.relawans = response.data.data.map((item) => ({
           ...item,
-          image_url: `${baseUrl}/storage/${item.image_url}`,
+          image_url: `${baseUrl}/storage/public/${item.image_url}`,
         }));
       } catch (error) {
         console.error("Gagal mengambil data program:", error);

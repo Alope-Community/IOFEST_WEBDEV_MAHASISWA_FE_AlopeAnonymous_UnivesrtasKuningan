@@ -1,7 +1,7 @@
 <template>
   <section class="relative">
     <!-- Background Radial Gradient -->
-    <span
+    <!-- <span
       class="absolute z-[-1] lg:w-[1200px] lg:h-[1200px] w-[500px] h-[500px] lg:rounded-full lg:-left-[500px] lg:bottom-[-500px] lg:rotate-[-150deg] -left-[200px] rotate-90 lg:block hidden"
       style="
         background-image: radial-gradient(
@@ -11,7 +11,7 @@
           rgba(59, 130, 246, 0) 100%
         );
       "
-    ></span>
+    ></span> -->
 
     <div class="relative h-[350px] rounded-md overflow-hidden">
       <img
@@ -154,41 +154,44 @@ export default {
       relawans: [],
     };
   },
-  computed: {
-  },
+  computed: {},
   methods: {
     async searchDonasi(search) {
       const baseUrl = import.meta.env.VITE_API_BASE_URL;
-      const searchResponse = await axios.get(`${baseUrl}/api/donasi?search=${search.target.value}`);
-        this.donasis = searchResponse.data.data;
+      const searchResponse = await axios.get(
+        `${baseUrl}/api/donasi?search=${search.target.value}`
+      );
+      this.donasis = searchResponse.data.data;
 
-        this.donasis = searchResponse.data.data.map(item => ({
-          ...item,
-          image_url: `${baseUrl}/storage/${item.image_url }`
-        }));
+      this.donasis = searchResponse.data.data.map((item) => ({
+        ...item,
+        image_url: `${baseUrl}/storage/public/${item.image_url}`,
+      }));
     },
     async fetchDonasi() {
       try {
         const baseUrl = import.meta.env.VITE_API_BASE_URL;
-        const relawanResponse = await axios.get(`${baseUrl}/api/donasi`);
-        const artikelResponse = await axios.get(`${baseUrl}/api/artikel?limit=3`);
-        const donasiResponse = await axios.get(`${baseUrl}/api/donasi?limit=2`);
+        const relawanResponse = await axios.get(`${baseUrl}/api/relawan?limit=2`);
+        const artikelResponse = await axios.get(
+          `${baseUrl}/api/artikel?limit=3`
+        );
+        const donasiResponse = await axios.get(`${baseUrl}/api/donasi`);
 
         this.relawans = relawanResponse.data.data;
         this.artikels = artikelResponse.data.data;
         this.donasis = donasiResponse.data.data;
 
-        this.relawans = relawanResponse.data.data.map(item => ({
+        this.relawans = relawanResponse.data.data.map((item) => ({
           ...item,
-          image_url: `${baseUrl}/storage/${item.image_url}`
+          image_url: `${baseUrl}/storage/public/${item.image_url}`,
         }));
-        this.artikels = artikelResponse.data.data.map(item => ({
+        this.artikels = artikelResponse.data.data.map((item) => ({
           ...item,
-          gambar: `${baseUrl}/storage/${item.gambar}`
+          gambar: `${baseUrl}/storage/public/${item.gambar}`,
         }));
-        this.donasis = donasiResponse.data.data.map(item => ({
+        this.donasis = donasiResponse.data.data.map((item) => ({
           ...item,
-          image_url: `${baseUrl}/storage/${item.image_url }`
+          image_url: `${baseUrl}/storage/public/${item.image_url}`,
         }));
       } catch (error) {
         console.error("Gagal mengambil data program:", error);
@@ -206,8 +209,7 @@ export default {
     },
   },
   mounted() {
-    this.fetchDonasi(),
-    window.scrollTo(0, 0);
+    this.fetchDonasi(), window.scrollTo(0, 0);
   },
 };
 </script>

@@ -35,6 +35,34 @@
         </RouterLink>
       </div>
       <div v-else class="hidden md:flex space-x-4">
+        <div>
+          <router-link
+            to="/list_relawan"
+            class="relative text-gray-800 font-medium hover:text-blue-500 after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-full after:bg-blue-500 after:scale-x-0 after:origin-left hover:after:scale-x-100 after:transition-transform after:duration-500"
+            >Relawan</router-link
+          >
+        </div>
+        <div>
+          <router-link
+            to="/list_donasi"
+            class="relative text-gray-800 font-medium hover:text-blue-500 after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-full after:bg-blue-500 after:scale-x-0 after:origin-left hover:after:scale-x-100 after:transition-transform after:duration-500"
+            >Donasi</router-link
+          >
+        </div>
+        <div>
+          <router-link
+            to="/artikel"
+            class="relative text-gray-800 font-medium hover:text-blue-500 after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-full after:bg-blue-500 after:scale-x-0 after:origin-left hover:after:scale-x-100 after:transition-transform after:duration-500"
+            >Article</router-link
+          >
+        </div>
+        <div>
+          <router-link
+            to="/forum-diskusi"
+            class="relative text-gray-800 font-medium hover:text-blue-500 after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-full after:bg-blue-500 after:scale-x-0 after:origin-left hover:after:scale-x-100 after:transition-transform after:duration-500"
+            >Forum Diskusi</router-link
+          >
+        </div>
         <RouterLink
           to="/profile"
           class="flex items-center gap-2 bg-blue-500 text-white font-medium py-2 px-4 rounded-lg hover:bg-blue-600 transition duration-300"
@@ -80,6 +108,34 @@
           v-if="isAuthenticated == 'false' || isAuthenticatedFromNav == 'false'"
           class="flex flex-col space-y-4"
         >
+          <div class="text-center">
+            <router-link
+              to="/list_relawan"
+              class="relative text-center text-gray-800 font-medium hover:text-blue-500 after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-full after:bg-blue-500 after:scale-x-0 after:origin-left hover:after:scale-x-100 after:transition-transform after:duration-500"
+              >Relawan</router-link
+            >
+          </div>
+          <div class="text-center">
+            <router-link
+              to="/list_donasi"
+              class="relative text-center text-gray-800 font-medium hover:text-blue-500 after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-full after:bg-blue-500 after:scale-x-0 after:origin-left hover:after:scale-x-100 after:transition-transform after:duration-500"
+              >Donasi</router-link
+            >
+          </div>
+          <div class="text-center">
+            <router-link
+              to="/artikel"
+              class="relative text-center text-gray-800 font-medium hover:text-blue-500 after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-full after:bg-blue-500 after:scale-x-0 after:origin-left hover:after:scale-x-100 after:transition-transform after:duration-500"
+              >Article</router-link
+            >
+          </div>
+          <div class="text-center">
+            <router-link
+              to="/forum-diskusi"
+              class="relative text-center text-gray-800 font-medium hover:text-blue-500 after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-full after:bg-blue-500 after:scale-x-0 after:origin-left hover:after:scale-x-100 after:transition-transform after:duration-500"
+              >Forum Diskusi</router-link
+            >
+          </div>
           <RouterLink
             to="/login"
             class="w-full bg-blue-500 text-white font-medium py-2 px-4 rounded-lg hover:bg-blue-600 transition duration-300 text-center"
@@ -94,6 +150,34 @@
           </RouterLink>
         </div>
         <div v-else class="flex flex-col space-y-4">
+          <div class="text-center">
+            <router-link
+              to="/list_relawan"
+              class="relative text-center text-gray-800 font-medium hover:text-blue-500 after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-full after:bg-blue-500 after:scale-x-0 after:origin-left hover:after:scale-x-100 after:transition-transform after:duration-500"
+              >Relawan</router-link
+            >
+          </div>
+          <div class="text-center">
+            <router-link
+              to="/list_donasi"
+              class="relative text-center text-gray-800 font-medium hover:text-blue-500 after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-full after:bg-blue-500 after:scale-x-0 after:origin-left hover:after:scale-x-100 after:transition-transform after:duration-500"
+              >Donasi</router-link
+            >
+          </div>
+          <div class="text-center">
+            <router-link
+              to="/artikel"
+              class="relative text-center text-gray-800 font-medium hover:text-blue-500 after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-full after:bg-blue-500 after:scale-x-0 after:origin-left hover:after:scale-x-100 after:transition-transform after:duration-500"
+              >Article</router-link
+            >
+          </div>
+          <div class="text-center">
+            <router-link
+              to="/forum-diskusi"
+              class="relative text-center text-gray-800 font-medium hover:text-blue-500 after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-full after:bg-blue-500 after:scale-x-0 after:origin-left hover:after:scale-x-100 after:transition-transform after:duration-500"
+              >Forum Diskusi</router-link
+            >
+          </div>
           <RouterLink
             to="/profile"
             class="flex items-center justify-center gap-2 bg-blue-500 text-white font-medium py-2 px-4 rounded-lg hover:bg-blue-600 transition duration-300"
